@@ -1,0 +1,112 @@
+application.args=
+build.classes.dir=${build.dir}/classes
+build.classes.excludes=**/*.java,**/*.form
+# This directory is removed when the project is cleaned:
+build.dir=build
+build.generated.dir=${build.dir}/generated
+# Only compile against the classpath explicitly listed here:
+build.sysclasspath=ignore
+build.test.classes.dir=${build.dir}/test/classes
+build.test.results.dir=${build.dir}/test/results
+debug.classpath=\
+    ${run.classpath}
+debug.test.classpath=\
+    ${run.test.classpath}
+# This directory is removed when the project is cleaned:
+dist.dir=dist
+dist.jar=${dist.dir}/Dyna.jar
+dist.javadoc.dir=${dist.dir}/javadoc
+file.reference.antlr-2.7.5.jar=lib/antlr-2.7.5.jar
+file.reference.arq.jar=lib/arq.jar
+file.reference.commons-lang-2.0.jar=lib/commons-lang-2.0.jar
+file.reference.commons-logging.jar=lib/commons-logging.jar
+file.reference.concurrent.jar=lib/concurrent.jar
+file.reference.edtftpj-1.5.2.jar=lib/edtftpj-1.5.2.jar
+file.reference.ekitspell.jar=lib/ekitspell.jar
+file.reference.icu4j_3_4.jar=lib/icu4j_3_4.jar
+file.reference.iri.jar=lib/iri.jar
+file.reference.javacc.jar=lib/javacc.jar
+file.reference.jcalendar.jar=lib/jcalendar.jar
+file.reference.jena.jar=lib/jena.jar
+file.reference.json.jar=lib/json.jar
+file.reference.junit.jar=lib/junit.jar
+file.reference.kazuki.jar=lib/kazuki.jar
+file.reference.lax.jar=lib/lax.jar
+file.reference.log4j-1.2.12.jar=lib/log4j-1.2.12.jar
+file.reference.looks.jar=lib/looks.jar
+file.reference.owlsyntax.jar=lib/owlsyntax.jar
+file.reference.protege-owl.jar=lib/protege-owl.jar
+file.reference.protege.jar-1=lib/protege.jar
+file.reference.stax-api-1.0.jar=lib/stax-api-1.0.jar
+file.reference.swing-layout-1.0.jar=lib/swing-layout-1.0.jar
+file.reference.swrl-jess-bridge.jar=lib/swrl-jess-bridge.jar
+file.reference.wstx-asl-2.8.jar=lib/wstx-asl-2.8.jar
+file.reference.xercesImpl.jar=lib/xercesImpl.jar
+file.reference.xml-apis.jar=lib/xml-apis.jar
+jar.compress=false
+javac.classpath=\
+    ${file.reference.javacc.jar}:\
+    ${file.reference.swing-layout-1.0.jar}:\
+    ${file.reference.lax.jar}:\
+    ${file.reference.looks.jar}:\
+    ${file.reference.protege.jar-1}:\
+    ${file.reference.antlr-2.7.5.jar}:\
+    ${file.reference.arq.jar}:\
+    ${file.reference.commons-lang-2.0.jar}:\
+    ${file.reference.commons-logging.jar}:\
+    ${file.reference.concurrent.jar}:\
+    ${file.reference.edtftpj-1.5.2.jar}:\
+    ${file.reference.ekitspell.jar}:\
+    ${file.reference.icu4j_3_4.jar}:\
+    ${file.reference.iri.jar}:\
+    ${file.reference.jcalendar.jar}:\
+    ${file.reference.jena.jar}:\
+    ${file.reference.json.jar}:\
+    ${file.reference.junit.jar}:\
+    ${file.reference.kazuki.jar}:\
+    ${file.reference.log4j-1.2.12.jar}:\
+    ${file.reference.owlsyntax.jar}:\
+    ${file.reference.protege-owl.jar}:\
+    ${file.reference.stax-api-1.0.jar}:\
+    ${file.reference.swrl-jess-bridge.jar}:\
+    ${file.reference.wstx-asl-2.8.jar}:\
+    ${file.reference.xercesImpl.jar}:\
+    ${file.reference.xml-apis.jar}:\
+    ${libs.swing-layout.classpath}
+# Space-separated list of extra javac options
+javac.compilerargs=-Xlint:unchecked
+javac.deprecation=false
+javac.source=1.5
+javac.target=1.5
+javac.test.classpath=\
+    ${javac.classpath}:\
+    ${build.classes.dir}:\
+    ${libs.junit.classpath}
+javadoc.additionalparam=
+javadoc.author=false
+javadoc.encoding=
+javadoc.noindex=false
+javadoc.nonavbar=false
+javadoc.notree=false
+javadoc.private=false
+javadoc.splitindex=true
+javadoc.use=true
+javadoc.version=false
+javadoc.windowtitle=
+main.class=ca.uregina.engg.eil.dyna.Dyna
+manifest.file=src/META-INF/MANIFEST.MF
+meta.inf.dir=${src.dir}/META-INF
+no.dependencies=true
+platform.active=default_platform
+run.classpath=\
+    ${javac.classpath}:\
+    ${build.classes.dir}
+# Space-separated list of JVM arguments used when running the project
+# (you may also define separate properties like run-sys-prop.name=value instead of -Dname=value
+# or test-sys-prop.name=value to set system properties for unit tests):
+run.jvmargs=
+run.test.classpath=\
+    ${javac.test.classpath}:\
+    ${build.test.classes.dir}
+src.dir=src
+test.src.dir=test

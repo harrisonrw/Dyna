@@ -1,0 +1,465 @@
+/* 
+ * TBL.jjt
+ *
+ * Definition of the Task Behaviour Language (TBL) grammar
+ *
+ * @author Robert Harrison
+ *
+ * Energy Informatics Laboratory
+ * Faculty of Engineering
+ * University of Regina
+ * http://www.uregina.ca/engg
+ */
+
+
+options
+{
+    STATIC=false;
+    MULTI=true; 
+    NODE_EXTENDS="MyNode";
+    NODE_DEFAULT_VOID=false;
+    NODE_PREFIX="";
+    NODE_USES_PARSER=true;    
+}
+
+PARSER_BEGIN(TBLParser)
+
+package ca.uregina.engg.eil.dyna.interpreter;
+
+public class TBLParser
+{
+}
+
+PARSER_END(TBLParser)
+
+
+/* Lexer */
+
+SKIP : 
+{ 
+    " " 
+|   "\t" 
+|   "\n" 
+|   "\r" 
+}
+
+/* Pound-style comments. */
+SPECIAL_TOKEN: 
+{  
+    < "#" > : WithinComment1 
+}
+
+<WithinComment1> SPECIAL_TOKEN:
+{
+    < "\n" > : DEFAULT
+}
+
+<WithinComment1> MORE: 
+{ 
+    < ~[] > 
+}
+
+TOKEN : 
+{
+    < POWER : "**" >
+|   < MULT : "*" > 
+|   < DIV : "/" >
+|   < MOD : "%" >
+|   < PLUS : "+" >
+|   < MINUS : "-">
+}
+
+TOKEN :
+{
+    < EQUALS : "=" >
+}
+
+TOKEN :
+{
+    < EQEQUAL : "==" >
+|   < NOTEQUAL : "!=" >
+|   < LT : "<" >
+|   < GT : ">" >
+|   < LTEQUAL : "<=" >
+|   < GTEQUAL : ">=" >
+}
+
+TOKEN :
+{
+    < OR : "or" >
+|   < AND : "and" >
+|   < NOT : "not" >
+|   < XOR : "xor" >
+}
+
+TOKEN :
+{
+    < LPAR : "(" >
+|   < RPAR : ")" >
+|   < DOT : "." >
+|   < LCBRACE : "{" >
+|   < RCBRACE : "}" >
+|   < LBRACK : "[" >
+|   < RBRACK : "]" >
+|   < COMMA : "," >
+}
+
+TOKEN :
+{
+    < PRINT : "print" >
+|   < INT : "int" >
+|   < FLOAT : "float" >
+|   < BOOLEAN : "boolean" >
+|   < STRING : "string" >
+|   < CLASS : "class" >
+|   < WHILE : "while" >
+|   < IF : "if" >
+|   < ELSE : "else" >
+|   < ASSERT : "assert" >
+|   < RETURN : "return" >
+|   < TASK : "task" >
+|   < SQRT : "sqrt" >
+}
+
+TOKEN :
+{
+    < TRUE : "true" >
+|   < FALSE : "false" >
+}
+
+TOKEN : 
+{ 
+    < INT_LITERAL  : ("-")* <DIGITS> > 
+|   < FLOAT_LITERAL : ("-")* <DIGITS> "." <DIGITS> >
+|   < STRING_LITERAL : "\"" (<LETTER> | <DIGITS> | "_" | " ")* "\""  >
+}
+
+TOKEN : 
+{ 
+    < IDENTIFIER : <LETTER> (<LETTER> | <DIGITS> | "_" | ":")* >
+|   < #LETTER : [ "a"-"z", "A"-"Z" ] >
+|   < #DIGITS : ( ["0" - "9"] )+  > 
+}
+
+/* Parser */
+
+void Start() #Root:
+{
+}
+{    
+    
+    
+    ( LOOKAHEAD(2) VarDeclaration()        
+      |
+      Stmt() )*          
+   
+    <EOF>
+}
+
+void TaskDef() #TaskDef:
+{
+}
+{
+    <TASK> Id() <LPAR> ( LOOKAHEAD(2) VarDeclaration() ( <COMMA> VarDeclaration() )* )* <RPAR>
+    (
+
+        Suite()
+    )
+}
+
+void VarDeclaration() #VarDeclaration:
+{   
+    Token t;
+}
+{    
+    DataType()
+    t = <IDENTIFIER> { jjtThis.m_name = t.image; }         
+}
+
+void DataType() #void:
+{
+}
+{    
+    StdDataType() 
+|   CustomDataType()
+}
+
+void StdDataType() #StdDataType:
+{
+    Token t;
+}
+{    
+    ( t = <INT> 
+      { 
+        jjtThis.m_type = INT; 
+        jjtThis.m_name = t.image;
+      }
+    )
+|
+    ( t = <FLOAT>
+      {
+         jjtThis.m_type = FLOAT;
+         jjtThis.m_name = t.image;
+      }
+    )
+|
+    ( t = <BOOLEAN>
+      {
+        jjtThis.m_type = BOOLEAN;
+        jjtThis.m_name = t.image;
+      }
+    )
+|
+    ( t = <STRING>
+      {
+        jjtThis.m_type = STRING;
+        jjtThis.m_name = t.image;
+      }
+    )
+}
+
+void CustomDataType() #CustomDataType:
+{
+    Token t;
+}
+{    
+    t = <IDENTIFIER> 
+    { 
+        jjtThis.m_type = CLASS; 
+        jjtThis.m_name = t.image;
+    }
+}
+
+void Stmt() #void:
+{
+}
+{    
+     
+    LOOKAHEAD( Primary() <EQUALS> ) Assignment()
+|   LOOKAHEAD(2) SimpleStmt()
+|   WhileStmt()
+|   IfStmt()
+|   AssertStmt()
+|   ReturnStmt()
+|   Suite()
+|   TaskDef()
+}
+
+
+void SimpleStmt() #void:
+{
+    Token t;
+}
+{
+    ( 
+        Expr()
+    |   <PRINT> Expr()    #PrintStmt
+    )    
+}
+
+void Assignment() #void:
+{
+}
+{
+    Primary() <EQUALS> Expr() #Assign(2)
+}
+
+void Expr() #void:
+{
+}
+{
+    
+    LogicalExpr()
+|   <NOT> LogicalExpr() #NotExpr(1)
+}
+
+void LogicalExpr() #void:
+{
+}
+{
+    CompExpr()
+    (
+        <OR> CompExpr() #OrExpr(2)
+        | <AND> CompExpr() #AndExpr(2)
+        | <XOR> CompExpr() #XorExpr(2)
+    )*
+}
+
+void CompExpr() #void:
+{
+}
+{
+    UnaryExpr()
+    (
+        <EQEQUAL> UnaryExpr() #EqEqual(2)
+        | <NOTEQUAL> UnaryExpr() #NotEqual(2)
+        | <LT> UnaryExpr() #LT(2)
+        | <GT> UnaryExpr() #GT(2)
+        | <LTEQUAL> UnaryExpr() #LTEqual(2)
+        | <GTEQUAL> UnaryExpr() #GTEqual(2)
+    )*
+}
+
+void UnaryExpr() #void:
+{    
+}
+{       
+    MultExpr()
+    ( 
+        <MINUS> MultExpr() #MinusExpr(2)
+        | <PLUS> MultExpr() #PlusExpr(2)
+    )*    
+}
+
+void MultExpr() #void:
+{
+}
+{
+    PowerExpr()
+    (
+        <MULT> PowerExpr() #MulExpr(2)
+        | <DIV> PowerExpr() #DivExpr(2)
+        | <MOD> PowerExpr() #ModExpr(2)
+    )*
+}
+
+void PowerExpr() #void:
+{
+}
+{
+    Primary()
+    (
+        <POWER> Primary() #PowExpr(2)
+    )*
+}
+
+void Primary() #void:
+{
+}
+{    
+    Atom()
+    (
+        <DOT> Atom() #AttributeRef(2)
+    )*
+}
+
+void Atom() #void:
+{      
+}
+{       
+    Literal()
+|   LOOKAHEAD(2) SqrtStmt()
+|   LOOKAHEAD(2) FunCall()
+|   Id() 
+|   <LPAR> Expr() <RPAR>
+}
+
+void Literal() #void:
+{
+}
+{
+    IntLiteral()
+|   FloatLiteral()
+|   BooleanLiteral()
+|   StringLiteral()
+}
+
+void IntLiteral() #IntLiteral:
+{
+    Token t;
+}
+{
+    t = <INT_LITERAL>        
+    { 
+        jjtThis.m_value = Integer.parseInt(t.image); 
+    }
+}
+
+void FloatLiteral() #FloatLiteral:
+{
+    Token t;
+}
+{
+    t = <FLOAT_LITERAL>
+    {
+        jjtThis.m_value = Float.parseFloat(t.image);
+    }
+}
+
+void BooleanLiteral() #void:
+{    
+}
+{
+    <TRUE>  #True
+|   <FALSE> #False
+}
+
+void StringLiteral() #StringLiteral:
+{
+    Token t;
+}
+{        
+    t = <STRING_LITERAL>
+    {
+        String temp = new String(t.image);
+        jjtThis.m_value = new String(temp.substring(1, temp.length() - 1));
+    }    
+}
+
+void Id() #Id:
+{
+    Token t;
+}
+{
+    t = <IDENTIFIER>    { jjtThis.m_name = t.image; }       
+}
+
+void Suite() #Suite:
+{    
+}
+{    
+    <LCBRACE> ( LOOKAHEAD(2) VarDeclaration()        
+                |  Stmt() )* <RCBRACE>    
+}
+
+void WhileStmt() #WhileStmt(2):
+{
+}
+{
+    <WHILE> <LPAR> Expr() <RPAR> Suite()
+}
+
+void IfStmt() #IfStmt:
+{
+}
+{
+    <IF> <LPAR> Expr() <RPAR> Suite() ( LOOKAHEAD(2) <ELSE> IfStmt() )* ( LOOKAHEAD(2) <ELSE> Suite() )*
+}
+
+void AssertStmt() #AssertStmt:
+{
+}
+{
+    <ASSERT> <LPAR> Expr() <RPAR>
+}
+
+void SqrtStmt() #SqrtStmt:
+{
+}
+{
+    <SQRT> <LPAR> Expr() <RPAR>
+}
+
+void FunCall() #FunCall:
+{
+}
+{
+    Id() <LPAR> ( Expr() ( <COMMA> Expr() )* )* <RPAR>    
+}
+
+void ReturnStmt() #ReturnStmt:
+{
+}
+{
+    <RETURN> Expr()
+}
