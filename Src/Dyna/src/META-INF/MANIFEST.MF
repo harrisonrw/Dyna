@@ -1,4 +1,0 @@
-Manifest-Version: 1.0
-
-Name: ca.uregina.engg.eil.dyna.Dyna.class
-Tab-Widget: True
