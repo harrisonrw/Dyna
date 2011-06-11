@@ -1,0 +1,3406 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<DynaProject xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<ProjectName>Project</ProjectName>
+<Documentation/>
+<Url>http://142.3.27.23/~harrisonr/test.owl</Url>
+<NamespaceList>
+<Namespace>
+<Prefix>rdf</Prefix>
+<Uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#</Uri>
+</Namespace>
+<Namespace>
+<Prefix>xsd</Prefix>
+<Uri>http://www.w3.org/2001/XMLSchema#</Uri>
+</Namespace>
+<Namespace>
+<Prefix>rdfs</Prefix>
+<Uri>http://www.w3.org/2000/01/rdf-schema#</Uri>
+</Namespace>
+<Namespace>
+<Prefix>owl</Prefix>
+<Uri>http://www.w3.org/2002/07/owl#</Uri>
+</Namespace>
+<Namespace>
+<Prefix>dyn</Prefix>
+<Uri>http://142.3.27.23/~harrisonr/dynamic.owl#</Uri>
+</Namespace>
+<Namespace>
+<Prefix>petrol</Prefix>
+<Uri>http://142.3.27.23/~harrisonr/petrol_rem_sel.owl#</Uri>
+</Namespace>
+</NamespaceList>
+<TaskList>
+<Task>
+<Name>SetNumSamplingPoints</Name>
+<Documentation/>
+<SubTaskList/>
+<DependencyList/>
+<TaskArgList>
+<TaskArg>
+<VarType>int</VarType>
+<VarName>numSamplingPoints</VarName>
+</TaskArg>
+</TaskArgList>
+<TaskReturn/>
+<Behaviour>soilSamplingExp.numSamplingPoints = numSamplingPoints</Behaviour>
+<ObjectList>
+<Object rdf:resource="http://142.3.27.23/~harrisonr/petrol_rem_sel.owl#soilSamplingExp"/>
+</ObjectList>
+<PreCondition/>
+<TestSuite>
+<TestSetup/>
+<TestCaseList>
+<TestCase>
+<TestCaseName>testSetNumSamplingPoints</TestCaseName>
+<TestCaseCode>SetNumSamplingPoints(1)
+
+assert(soilSamplingExp.numSamplingPoints == 1)</TestCaseCode>
+</TestCase>
+</TestCaseList>
+</TestSuite>
+</Task>
+<Task>
+<Name>DetermineSiteHydraulicConductivity</Name>
+<Documentation/>
+<SubTaskList/>
+<DependencyList/>
+<TaskArgList/>
+<TaskReturn/>
+<Behaviour>DetermineSoilType(soilSample1.calculatedSandPercentage, soilSample1.calculatedSiltPercentage, soilSample1.calculatedClayPercentage)
+
+CalculateSoilTextureContributionFactor()
+
+CalculateHorizontalHydraulicConductivity()
+
+CalculateVerticalHydraulicConductivity()
+
+DetermineSoilHeterogeneity(soilSample1.soilTextureContributionFactor)
+
+DetermineSoilIsotropy(soilSample1.horizontalHydraulicConductivity, soilSample1.verticalHydraulicConductivity)
+
+DetermineSoilHydraulicPermeability()
+
+DetermineSoilHydraulicConductivity(soilSample1.soilIsotropy, soilSample1.soilHeterogeneity)
+
+SetSiteHydraulicConductivity(soilSample1.soilHeterogeneity, soilSample1.soilIsotropy, soilSample1.soilPermeability)</Behaviour>
+<ObjectList>
+<Object rdf:resource="http://142.3.27.23/~harrisonr/petrol_rem_sel.owl#soilSample1"/>
+</ObjectList>
+<PreCondition/>
+<TestSuite>
+<TestSetup/>
+<TestCaseList/>
+</TestSuite>
+</Task>
+<Task>
+<Name>SoilSampling</Name>
+<Documentation/>
+<SubTaskList/>
+<DependencyList/>
+<TaskArgList>
+<TaskArg>
+<VarType>string</VarType>
+<VarName>samplingMethod</VarName>
+</TaskArg>
+<TaskArg>
+<VarType>int</VarType>
+<VarName>numSamplingPoints</VarName>
+</TaskArg>
+<TaskArg>
+<VarType>float</VarType>
+<VarName>moisturePercentage</VarName>
+</TaskArg>
+<TaskArg>
+<VarType>float</VarType>
+<VarName>sandThickness</VarName>
+</TaskArg>
+<TaskArg>
+<VarType>float</VarType>
+<VarName>sandyClayThickness</VarName>
+</TaskArg>
+<TaskArg>
+<VarType>float</VarType>
+<VarName>sandyLoamThickness</VarName>
+</TaskArg>
+<TaskArg>
+<VarType>float</VarType>
+<VarName>sandyClayLoamThickness</VarName>
+</TaskArg>
+<TaskArg>
+<VarType>float</VarType>
+<VarName>siltThickness</VarName>
+</TaskArg>
+<TaskArg>
+<VarType>float</VarType>
+<VarName>siltyLoamThickness</VarName>
+</TaskArg>
+<TaskArg>
+<VarType>float</VarType>
+<VarName>siltyClayLoamThickness</VarName>
+</TaskArg>
+<TaskArg>
+<VarType>float</VarType>
+<VarName>clayThickness</VarName>
+</TaskArg>
+<TaskArg>
+<VarType>float</VarType>
+<VarName>clayLoamThickness</VarName>
+</TaskArg>
+<TaskArg>
+<VarType>float</VarType>
+<VarName>loamThickness</VarName>
+</TaskArg>
+<TaskArg>
+<VarType>float</VarType>
+<VarName>loamySandThickness</VarName>
+</TaskArg>
+<TaskArg>
+<VarType>float</VarType>
+<VarName>sandPercentage</VarName>
+</TaskArg>
+<TaskArg>
+<VarType>float</VarType>
+<VarName>siltPercentage</VarName>
+</TaskArg>
+<TaskArg>
+<VarType>float</VarType>
+<VarName>clayPercentage</VarName>
+</TaskArg>
+<TaskArg>
+<VarType>float</VarType>
+<VarName>gravelPercentage</VarName>
+</TaskArg>
+</TaskArgList>
+<TaskReturn/>
+<Behaviour>SetSamplingMethod(samplingMethod)
+
+SetNumSamplingPoints(numSamplingPoints)
+
+CollectSoilSamples()
+
+MeasureMoisturePercentage(moisturePercentage)
+
+string mediaType
+mediaType = DetermineMedia()
+
+MeasureSoilThickness(sandThickness, sandyClayThickness, sandyLoamThickness, sandyClayLoamThickness, siltThickness, siltyClayThickness, siltyLoamThickness, siltyClayLoamThickness, clayThickness, clayLoamThickness, loamThickness, loamySandThickness)
+
+CalculateSamplingDepth(sandThickness, sandyClayThickness, sandyLoamThickness, sandyClayLoamThickness, siltThickness, siltyClayThickness, siltyLoamThickness, siltyClayLoamThickness, clayThickness, clayLoamThickness, loamThickness, loamySandThickness)
+
+MeasureSoilTypePercentages(sandPercentage, siltPercentage, clayPercentage, gravelPercentage)
+
+CalculateSoilTypePercentages(soilSample1.measuredSandPercentage, soilSample1.measuredSiltPercentage, soilSample1.measuredClayPercentage)
+
+MeasureContaminantConcentration()
+</Behaviour>
+<ObjectList>
+<Object rdf:resource="http://142.3.27.23/~harrisonr/petrol_rem_sel.owl#soilSample1"/>
+</ObjectList>
+<PreCondition/>
+<TestSuite>
+<TestSetup/>
+<TestCaseList/>
+</TestSuite>
+</Task>
+<Task>
+<Name>SetSamplingMethod</Name>
+<Documentation/>
+<SubTaskList/>
+<DependencyList/>
+<TaskArgList>
+<TaskArg>
+<VarType>string</VarType>
+<VarName>samplingMethodName</VarName>
+</TaskArg>
+</TaskArgList>
+<TaskReturn/>
+<Behaviour>soilSamplingExp.samplingMethodName = samplingMethodName</Behaviour>
+<ObjectList>
+<Object rdf:resource="http://142.3.27.23/~harrisonr/petrol_rem_sel.owl#soilSamplingExp"/>
+</ObjectList>
+<PreCondition/>
+<TestSuite>
+<TestSetup/>
+<TestCaseList>
+<TestCase>
+<TestCaseName>testSelectSamplingMethod</TestCaseName>
+<TestCaseCode>SetSamplingMethod("device soil sampling")
+
+assert (soilSamplingExp.samplingMethodName == "device soil sampling")</TestCaseCode>
+</TestCase>
+</TestCaseList>
+</TestSuite>
+</Task>
+<Task>
+<Name>CalculateSamplingDepth</Name>
+<Documentation/>
+<SubTaskList/>
+<DependencyList/>
+<TaskArgList>
+<TaskArg>
+<VarType>float</VarType>
+<VarName>sandThickness</VarName>
+</TaskArg>
+<TaskArg>
+<VarType>float</VarType>
+<VarName>sandyClayThickness</VarName>
+</TaskArg>
+<TaskArg>
+<VarType>float</VarType>
+<VarName>sandyLoamThickness</VarName>
+</TaskArg>
+<TaskArg>
+<VarType>float</VarType>
+<VarName>sandyClayLoamThickness</VarName>
+</TaskArg>
+<TaskArg>
+<VarType>float</VarType>
+<VarName>siltThickness</VarName>
+</TaskArg>
+<TaskArg>
+<VarType>float</VarType>
+<VarName>siltyClayThickness</VarName>
+</TaskArg>
+<TaskArg>
+<VarType>float</VarType>
+<VarName>siltyLoamThickness</VarName>
+</TaskArg>
+<TaskArg>
+<VarType>float</VarType>
+<VarName>siltyClayLoamThickness</VarName>
+</TaskArg>
+<TaskArg>
+<VarType>float</VarType>
+<VarName>clayThickness</VarName>
+</TaskArg>
+<TaskArg>
+<VarType>float</VarType>
+<VarName>clayLoamThickness</VarName>
+</TaskArg>
+<TaskArg>
+<VarType>float</VarType>
+<VarName>loamThickness</VarName>
+</TaskArg>
+<TaskArg>
+<VarType>float</VarType>
+<VarName>loamySandThickness</VarName>
+</TaskArg>
+</TaskArgList>
+<TaskReturn/>
+<Behaviour>soilSample1.sampleDepth = clayThickness + siltyClayThickness + sandyClayThickness + siltyClayLoamThickness + clayLoamThickness + sandyClayLoamThickness + siltyLoamThickness + siltThickness + loamThickness + sandyLoamThickness + loamySandThickness + sandThickness
+</Behaviour>
+<ObjectList>
+<Object rdf:resource="http://142.3.27.23/~harrisonr/petrol_rem_sel.owl#soilSample1"/>
+</ObjectList>
+<PreCondition/>
+<TestSuite>
+<TestSetup/>
+<TestCaseList>
+<TestCase>
+<TestCaseName>testCalculateSamplingDepth</TestCaseName>
+<TestCaseCode>CalculateSamplingDepth(15.0, 14.0, 13.0, 12.0, 11.0, 10.0, 9.0, 8.0, 7.0, 6.0, 5.0, 4.0)
+
+assert(soilSample1.sampleDepth == 114.0)</TestCaseCode>
+</TestCase>
+</TestCaseList>
+</TestSuite>
+</Task>
+<Task>
+<Name>DetermineSoilType</Name>
+<Documentation/>
+<SubTaskList/>
+<DependencyList/>
+<TaskArgList>
+<TaskArg>
+<VarType>float</VarType>
+<VarName>calcSandPercentage</VarName>
+</TaskArg>
+<TaskArg>
+<VarType>float</VarType>
+<VarName>calcSiltPercentage</VarName>
+</TaskArg>
+<TaskArg>
+<VarType>float</VarType>
+<VarName>calcClayPercentage</VarName>
+</TaskArg>
+</TaskArgList>
+<TaskReturn/>
+<Behaviour>SetSoilType(calcSandPercentage, calcSiltPercentage, calcClayPercentage)</Behaviour>
+<ObjectList>
+<Object rdf:resource="http://142.3.27.23/~harrisonr/petrol_rem_sel.owl#soilSample1"/>
+</ObjectList>
+<PreCondition/>
+<TestSuite>
+<TestSetup/>
+<TestCaseList>
+<TestCase>
+<TestCaseName>testClay</TestCaseName>
+<TestCaseCode>CalculateSoilTypePercentages(0.05, 0.05, 0.8)
+
+DetermineSoilType(soilSample1.calculatedSandPercentage, soilSample1.calculatedSiltPercentage, soilSample1.calculatedClayPercentage)
+
+assert(soilSample1.soilType == "clay")</TestCaseCode>
+</TestCase>
+</TestCaseList>
+</TestSuite>
+</Task>
+<Task>
+<Name>MeasureSoilThickness</Name>
+<Documentation/>
+<SubTaskList/>
+<DependencyList/>
+<TaskArgList>
+<TaskArg>
+<VarType>float</VarType>
+<VarName>sandThickness</VarName>
+</TaskArg>
+<TaskArg>
+<VarType>float</VarType>
+<VarName>sandyClayThickness</VarName>
+</TaskArg>
+<TaskArg>
+<VarType>float</VarType>
+<VarName>sandyLoamThickness</VarName>
+</TaskArg>
+<TaskArg>
+<VarType>float</VarType>
+<VarName>sandyClayLoamThickness</VarName>
+</TaskArg>
+<TaskArg>
+<VarType>float</VarType>
+<VarName>siltThickness</VarName>
+</TaskArg>
+<TaskArg>
+<VarType>float</VarType>
+<VarName>siltyClayThickness</VarName>
+</TaskArg>
+<TaskArg>
+<VarType>float</VarType>
+<VarName>siltyLoamThickness</VarName>
+</TaskArg>
+<TaskArg>
+<VarType>float</VarType>
+<VarName>siltyClayLoamThickness</VarName>
+</TaskArg>
+<TaskArg>
+<VarType>float</VarType>
+<VarName>clayThickness</VarName>
+</TaskArg>
+<TaskArg>
+<VarType>float</VarType>
+<VarName>clayLoamThickness</VarName>
+</TaskArg>
+<TaskArg>
+<VarType>float</VarType>
+<VarName>loamThickness</VarName>
+</TaskArg>
+<TaskArg>
+<VarType>float</VarType>
+<VarName>loamySandThickness</VarName>
+</TaskArg>
+</TaskArgList>
+<TaskReturn/>
+<Behaviour>MeasureSandThickness(sandThickness)
+MeasureSandyClayThickness(sandyClayThickness)
+MeasureSandyLoamThickness(sandyLoamThickness)
+MeasureSandyClayLoamThickness(sandyClayLoamThickness)
+
+MeasureSiltThickness(siltThickness)
+MeasureSiltyClayThickness(siltyClayThickness)
+MeasureSiltyLoamThickness(siltyLoamThickness)
+MeasureSiltyClayLoamThickness(siltyClayLoamThickness)
+
+MeasureClayThickness(clayThickness)
+MeasureClayLoamThickness(clayLoamThickness)
+
+MeasureLoamThickness(loamThickness)
+MeasureLoamySandThickness(loamySandThickness)</Behaviour>
+<ObjectList/>
+<PreCondition/>
+<TestSuite>
+<TestSetup/>
+<TestCaseList>
+<TestCase>
+<TestCaseName>testMeasureSoilThickness</TestCaseName>
+<TestCaseCode>float sandThickness
+sandThickness = 15.0
+
+float sandyClayThickness
+sandyClayThickness = 14.0
+
+float sandyLoamThickness
+sandyLoamThickness = 13.0
+
+float sandyClayLoamThickness
+sandyClayLoamThickness = 12.0
+
+float siltThickness
+siltThickness = 11.0
+
+float siltyClayThickness
+siltyClayThickness = 10.0
+
+float siltyLoamThickness
+siltyLoamThickness = 9.0
+
+float siltyClayLoamThickness
+siltyClayLoamThickness = 8.0
+
+float clayThickness
+clayThickness = 7.0
+
+float clayLoamThickness
+clayLoamThickness = 6.0
+
+float loamThickness
+loamThickness = 5.0
+
+float loamySandThickness
+loamySandThickness = 4.0
+
+# Run test
+MeasureSoilThickness(sandThickness, sandyClayThickness, sandyLoamThickness, sandyClayLoamThickness, siltThickness, siltyClayThickness, siltyLoamThickness, siltyClayLoamThickness, clayThickness, clayLoamThickness, loamThickness, loamySandThickness)
+
+# Verify
+assert(soilSample1.sandThickness == sandThickness and
+            soilSample1.sandyClayThickness == sandyClayThickness and
+            soilSample1.sandyLoamThickness == sandyLoamThickness and
+            soilSample1.sandyClayLoamThickness == sandyClayLoamThickness and
+            soilSample1.siltThickness == siltThickness and
+            soilSample1.siltyClayThickness == siltyClayThickness and
+            soilSample1.siltyLoamThickness == siltyLoamThickness and
+            soilSample1.siltyClayLoamThickness == siltyClayLoamThickness and
+            soilSample1.clayThickness == clayThickness and
+            soilSample1.clayLoamThickness = clayLoamThickness and
+            soilSample1.loamThickness == loamThickness and
+            soilSample1.loamySandThickness == loamySandThickness)
+</TestCaseCode>
+</TestCase>
+</TestCaseList>
+</TestSuite>
+</Task>
+<Task>
+<Name>MeasureSiteArea</Name>
+<Documentation/>
+<SubTaskList/>
+<DependencyList/>
+<TaskArgList>
+<TaskArg>
+<VarType>int</VarType>
+<VarName>siteArea</VarName>
+</TaskArg>
+</TaskArgList>
+<TaskReturn/>
+<Behaviour>site.siteArea = siteArea</Behaviour>
+<ObjectList>
+<Object rdf:resource="http://142.3.27.23/~harrisonr/petrol_rem_sel.owl#site"/>
+</ObjectList>
+<PreCondition/>
+<TestSuite>
+<TestSetup/>
+<TestCaseList>
+<TestCase>
+<TestCaseName>testMeasureSiteArea</TestCaseName>
+<TestCaseCode>MeasureSiteArea(100)
+
+assert(site.siteArea == 100)</TestCaseCode>
+</TestCase>
+</TestCaseList>
+</TestSuite>
+</Task>
+<Task>
+<Name>MeasureSiteVolume</Name>
+<Documentation/>
+<SubTaskList/>
+<DependencyList/>
+<TaskArgList>
+<TaskArg>
+<VarType>int</VarType>
+<VarName>siteVolume</VarName>
+</TaskArg>
+</TaskArgList>
+<TaskReturn/>
+<Behaviour>site.siteVolume = siteVolume</Behaviour>
+<ObjectList>
+<Object rdf:resource="http://142.3.27.23/~harrisonr/petrol_rem_sel.owl#site"/>
+</ObjectList>
+<PreCondition/>
+<TestSuite>
+<TestSetup/>
+<TestCaseList>
+<TestCase>
+<TestCaseName>testMeasureSiteVolume</TestCaseName>
+<TestCaseCode>MeasureSiteVolume(1000)
+
+assert(site.siteVolume == 1000)</TestCaseCode>
+</TestCase>
+</TestCaseList>
+</TestSuite>
+</Task>
+<Task>
+<Name>MeasureSandPercentage</Name>
+<Documentation/>
+<SubTaskList/>
+<DependencyList/>
+<TaskArgList>
+<TaskArg>
+<VarType>float</VarType>
+<VarName>sandPercentage</VarName>
+</TaskArg>
+</TaskArgList>
+<TaskReturn/>
+<Behaviour>soilSample1.sandPercentage = sandPercentage</Behaviour>
+<ObjectList>
+<Object rdf:resource="http://142.3.27.23/~harrisonr/petrol_rem_sel.owl#soilSample1"/>
+</ObjectList>
+<PreCondition/>
+<TestSuite>
+<TestSetup/>
+<TestCaseList>
+<TestCase>
+<TestCaseName>testMeasureSandPercentage</TestCaseName>
+<TestCaseCode>MeasureSandPercentage(50.0)
+
+assert(soilSample1.sandPercentage == 50.0)</TestCaseCode>
+</TestCase>
+</TestCaseList>
+</TestSuite>
+</Task>
+<Task>
+<Name>MeasureSiltPercentage</Name>
+<Documentation/>
+<SubTaskList/>
+<DependencyList/>
+<TaskArgList>
+<TaskArg>
+<VarType>float</VarType>
+<VarName>siltPercentage</VarName>
+</TaskArg>
+</TaskArgList>
+<TaskReturn/>
+<Behaviour>soilSample1.siltPercentage = siltPercentage</Behaviour>
+<ObjectList>
+<Object rdf:resource="http://142.3.27.23/~harrisonr/petrol_rem_sel.owl#soilSample1"/>
+</ObjectList>
+<PreCondition/>
+<TestSuite>
+<TestSetup/>
+<TestCaseList>
+<TestCase>
+<TestCaseName>testMeasureSiltPercentage</TestCaseName>
+<TestCaseCode>MeasureSiltPercentage(25.0)
+
+assert(soilSample1.siltPercentage == 25.0)</TestCaseCode>
+</TestCase>
+</TestCaseList>
+</TestSuite>
+</Task>
+<Task>
+<Name>MeasureClayPercentage</Name>
+<Documentation/>
+<SubTaskList/>
+<DependencyList/>
+<TaskArgList>
+<TaskArg>
+<VarType>float</VarType>
+<VarName>clayPercentage</VarName>
+</TaskArg>
+</TaskArgList>
+<TaskReturn/>
+<Behaviour>soilSample1.clayPercentage = clayPercentage</Behaviour>
+<ObjectList>
+<Object rdf:resource="http://142.3.27.23/~harrisonr/petrol_rem_sel.owl#soilSample1"/>
+</ObjectList>
+<PreCondition/>
+<TestSuite>
+<TestSetup/>
+<TestCaseList/>
+</TestSuite>
+</Task>
+<Task>
+<Name>MeasureContaminantConcentration</Name>
+<Documentation/>
+<SubTaskList/>
+<DependencyList/>
+<TaskArgList/>
+<TaskReturn/>
+<Behaviour>MeasureBenzeneConcentration()
+MeasureEthylBenzeneConcentration()
+MeasureTolueneConcentration()
+MeasureXylenesConcentration()
+</Behaviour>
+<ObjectList>
+<Object rdf:resource="http://142.3.27.23/~harrisonr/petrol_rem_sel.owl#soilSamplingExp"/>
+</ObjectList>
+<PreCondition/>
+<TestSuite>
+<TestSetup># setup some values for the chemicals here</TestSetup>
+<TestCaseList>
+<TestCase>
+<TestCaseName>testMeasureContaminantConcentration</TestCaseName>
+<TestCaseCode>benzene.chemicalConcentration = 10.0
+ethylBenzene.chemicalConcentration = 8.0
+toluene.chemiclaConcentration = 6.0
+xylenes.chemicalConcentration = 4.0
+
+MeasureContaminantConcentration()
+
+assert(soilSamplingExp.benzeneConcentration == 10.0 and
+            soilSamplingExp.ethylBenzeneConcentration == 8.0 and
+            soilSamplingExp.tolueneConcentration == 6.0 and
+            soilSamplingExp.xylenesConcentration == 4.0)</TestCaseCode>
+</TestCase>
+</TestCaseList>
+</TestSuite>
+</Task>
+<Task>
+<Name>MeasureBenzeneConcentration</Name>
+<Documentation/>
+<SubTaskList/>
+<DependencyList/>
+<TaskArgList/>
+<TaskReturn/>
+<Behaviour>soilSamplingExp.benzeneConcentration = benzene.chemicalConcentration</Behaviour>
+<ObjectList>
+<Object rdf:resource="http://142.3.27.23/~harrisonr/petrol_rem_sel.owl#benzene"/>
+<Object rdf:resource="http://142.3.27.23/~harrisonr/petrol_rem_sel.owl#soilSamplingExp"/>
+</ObjectList>
+<PreCondition/>
+<TestSuite>
+<TestSetup/>
+<TestCaseList>
+<TestCase>
+<TestCaseName>testMeasureBenzeneConcentration</TestCaseName>
+<TestCaseCode>benzene.chemicalConcentration = 10.0
+
+MeasureBenzeneConcentration()
+
+assert(soilSamplingExp.benzeneConcentration == 10.0)</TestCaseCode>
+</TestCase>
+</TestCaseList>
+</TestSuite>
+</Task>
+<Task>
+<Name>MeasureEthylBenzeneConcentration</Name>
+<Documentation/>
+<SubTaskList/>
+<DependencyList/>
+<TaskArgList/>
+<TaskReturn/>
+<Behaviour>soilSamplingExp.ethylBenzeneConcentration = ethylBenzene.chemicalConcentration</Behaviour>
+<ObjectList>
+<Object rdf:resource="http://142.3.27.23/~harrisonr/petrol_rem_sel.owl#ethylBenzene"/>
+<Object rdf:resource="http://142.3.27.23/~harrisonr/petrol_rem_sel.owl#soilSamplingExp"/>
+</ObjectList>
+<PreCondition/>
+<TestSuite>
+<TestSetup/>
+<TestCaseList>
+<TestCase>
+<TestCaseName>testMeasureEthylBenzeneConcentration</TestCaseName>
+<TestCaseCode>ethylBenzene.chemicalConcentration = 10.0
+
+MeasureEthylBenzeneConcentration()
+
+assert(soilSamplingExp.ethylBenzeneConcentration == 10.0)</TestCaseCode>
+</TestCase>
+</TestCaseList>
+</TestSuite>
+</Task>
+<Task>
+<Name>MeasureTolueneConcentration</Name>
+<Documentation/>
+<SubTaskList/>
+<DependencyList/>
+<TaskArgList/>
+<TaskReturn/>
+<Behaviour>soilSamplingExp.tolueneConcentration = toluene.chemicalConcentration</Behaviour>
+<ObjectList>
+<Object rdf:resource="http://142.3.27.23/~harrisonr/petrol_rem_sel.owl#toluene"/>
+<Object rdf:resource="http://142.3.27.23/~harrisonr/petrol_rem_sel.owl#soilSamplingExp"/>
+</ObjectList>
+<PreCondition/>
+<TestSuite>
+<TestSetup/>
+<TestCaseList>
+<TestCase>
+<TestCaseName>testMeasureTolueneConcentration</TestCaseName>
+<TestCaseCode>toluene.chemicalConcentration = 10.0
+
+MeasureTolueneConcentration()
+
+assert(soilSamplingExp.tolueneConcentration == 10.0)</TestCaseCode>
+</TestCase>
+</TestCaseList>
+</TestSuite>
+</Task>
+<Task>
+<Name>MeasureSandThickness</Name>
+<Documentation/>
+<SubTaskList/>
+<DependencyList/>
+<TaskArgList>
+<TaskArg>
+<VarType>float</VarType>
+<VarName>sandThickness</VarName>
+</TaskArg>
+</TaskArgList>
+<TaskReturn/>
+<Behaviour>soilSample1.sandThickness = sandThickness</Behaviour>
+<ObjectList>
+<Object rdf:resource="http://142.3.27.23/~harrisonr/petrol_rem_sel.owl#soilSample1"/>
+</ObjectList>
+<PreCondition/>
+<TestSuite>
+<TestSetup/>
+<TestCaseList>
+<TestCase>
+<TestCaseName>testMeasureSandThickness</TestCaseName>
+<TestCaseCode>MeasureSandThickness(10.0)
+
+assert(soilSample1.sandThickness == 10.0)</TestCaseCode>
+</TestCase>
+</TestCaseList>
+</TestSuite>
+</Task>
+<Task>
+<Name>MeasureSiltThickness</Name>
+<Documentation/>
+<SubTaskList/>
+<DependencyList/>
+<TaskArgList>
+<TaskArg>
+<VarType>float</VarType>
+<VarName>siltThickness</VarName>
+</TaskArg>
+</TaskArgList>
+<TaskReturn/>
+<Behaviour>soilSample1.siltThickness = siltThickness</Behaviour>
+<ObjectList>
+<Object rdf:resource="http://142.3.27.23/~harrisonr/petrol_rem_sel.owl#soilSample1"/>
+</ObjectList>
+<PreCondition/>
+<TestSuite>
+<TestSetup/>
+<TestCaseList>
+<TestCase>
+<TestCaseName>testMeasureSiltThickness</TestCaseName>
+<TestCaseCode>MeasureSiltThickness(10.0)
+
+assert(soilSample1.siltThickness == 10.0)</TestCaseCode>
+</TestCase>
+</TestCaseList>
+</TestSuite>
+</Task>
+<Task>
+<Name>MeasureClayThickness</Name>
+<Documentation/>
+<SubTaskList/>
+<DependencyList/>
+<TaskArgList>
+<TaskArg>
+<VarType>float</VarType>
+<VarName>clayThickness</VarName>
+</TaskArg>
+</TaskArgList>
+<TaskReturn/>
+<Behaviour>soilSample1.clayThickness = clayThickness</Behaviour>
+<ObjectList>
+<Object rdf:resource="http://142.3.27.23/~harrisonr/petrol_rem_sel.owl#soilSample1"/>
+</ObjectList>
+<PreCondition/>
+<TestSuite>
+<TestSetup/>
+<TestCaseList>
+<TestCase>
+<TestCaseName>testMeasureClayThickness</TestCaseName>
+<TestCaseCode>MeasureClayThickness(10.0)
+
+assert(soilSample1.clayThickness == 10.0)</TestCaseCode>
+</TestCase>
+</TestCaseList>
+</TestSuite>
+</Task>
+<Task>
+<Name>MeasureLoamThickness</Name>
+<Documentation/>
+<SubTaskList/>
+<DependencyList/>
+<TaskArgList>
+<TaskArg>
+<VarType>float</VarType>
+<VarName>loamThickness</VarName>
+</TaskArg>
+</TaskArgList>
+<TaskReturn/>
+<Behaviour>soilSample1.loamThickness = loamThickness</Behaviour>
+<ObjectList>
+<Object rdf:resource="http://142.3.27.23/~harrisonr/petrol_rem_sel.owl#soilSample1"/>
+</ObjectList>
+<PreCondition/>
+<TestSuite>
+<TestSetup/>
+<TestCaseList>
+<TestCase>
+<TestCaseName>testMeasureLoamThickness</TestCaseName>
+<TestCaseCode>MeasureLoamThickness(10.0)
+
+assert(soilSample1.loamThickness == 10.0)</TestCaseCode>
+</TestCase>
+</TestCaseList>
+</TestSuite>
+</Task>
+<Task>
+<Name>MeasureSandyClayThickness</Name>
+<Documentation/>
+<SubTaskList/>
+<DependencyList/>
+<TaskArgList>
+<TaskArg>
+<VarType>float</VarType>
+<VarName>sandyClayThickness</VarName>
+</TaskArg>
+</TaskArgList>
+<TaskReturn/>
+<Behaviour>soilSample1.sandyClayThickness = sandyClayThickness</Behaviour>
+<ObjectList>
+<Object rdf:resource="http://142.3.27.23/~harrisonr/petrol_rem_sel.owl#soilSample1"/>
+</ObjectList>
+<PreCondition/>
+<TestSuite>
+<TestSetup/>
+<TestCaseList>
+<TestCase>
+<TestCaseName>testMeasureSandyClayThickness</TestCaseName>
+<TestCaseCode>MeasureSandyClayThickness(10.0)
+
+assert(soilSample1.sandyClayThickness == 10.0)</TestCaseCode>
+</TestCase>
+</TestCaseList>
+</TestSuite>
+</Task>
+<Task>
+<Name>MeasureSandyLoamThickness</Name>
+<Documentation/>
+<SubTaskList/>
+<DependencyList/>
+<TaskArgList>
+<TaskArg>
+<VarType>float</VarType>
+<VarName>sandyLoamThickness</VarName>
+</TaskArg>
+</TaskArgList>
+<TaskReturn/>
+<Behaviour>soilSample1.sandyLoamThickness = sandyLoamThickness</Behaviour>
+<ObjectList>
+<Object rdf:resource="http://142.3.27.23/~harrisonr/petrol_rem_sel.owl#soilSample1"/>
+</ObjectList>
+<PreCondition/>
+<TestSuite>
+<TestSetup/>
+<TestCaseList>
+<TestCase>
+<TestCaseName>testMeasureSandyLoamThickness</TestCaseName>
+<TestCaseCode>MeasureSandyLoamThickness(10.0)
+
+assert(soilSample1.sandyLoamThickness == 10.0)</TestCaseCode>
+</TestCase>
+</TestCaseList>
+</TestSuite>
+</Task>
+<Task>
+<Name>MeasureSandyClayLoamThickness</Name>
+<Documentation/>
+<SubTaskList/>
+<DependencyList/>
+<TaskArgList>
+<TaskArg>
+<VarType>float</VarType>
+<VarName>sandyClayLoamThickness</VarName>
+</TaskArg>
+</TaskArgList>
+<TaskReturn/>
+<Behaviour>soilSample1.sandyClayLoamThickness = sandyClayLoamThickness</Behaviour>
+<ObjectList>
+<Object rdf:resource="http://142.3.27.23/~harrisonr/petrol_rem_sel.owl#soilSample1"/>
+</ObjectList>
+<PreCondition/>
+<TestSuite>
+<TestSetup/>
+<TestCaseList>
+<TestCase>
+<TestCaseName>testMeasureSandyClayLoamThickness</TestCaseName>
+<TestCaseCode>MeasureSandyClayLoamThickness(10.0)
+
+assert(soilSample1.sandyClayLoamThickness == 10.0)</TestCaseCode>
+</TestCase>
+</TestCaseList>
+</TestSuite>
+</Task>
+<Task>
+<Name>MeasureSiltyClayThickness</Name>
+<Documentation/>
+<SubTaskList/>
+<DependencyList/>
+<TaskArgList>
+<TaskArg>
+<VarType>float</VarType>
+<VarName>siltyClayThickness</VarName>
+</TaskArg>
+</TaskArgList>
+<TaskReturn/>
+<Behaviour>soilSample1.siltyClayThickness = siltyClayThickness</Behaviour>
+<ObjectList>
+<Object rdf:resource="http://142.3.27.23/~harrisonr/petrol_rem_sel.owl#soilSample1"/>
+</ObjectList>
+<PreCondition/>
+<TestSuite>
+<TestSetup/>
+<TestCaseList>
+<TestCase>
+<TestCaseName>testMeasureSiltyClayThickness</TestCaseName>
+<TestCaseCode>MeasureSiltyClayThickness(10.0)
+
+assert(soilSample1.siltyClayThickness == 10.0)</TestCaseCode>
+</TestCase>
+</TestCaseList>
+</TestSuite>
+</Task>
+<Task>
+<Name>MeasureSiltyLoamThickness</Name>
+<Documentation/>
+<SubTaskList/>
+<DependencyList/>
+<TaskArgList>
+<TaskArg>
+<VarType>float</VarType>
+<VarName>siltyLoamThickness</VarName>
+</TaskArg>
+</TaskArgList>
+<TaskReturn/>
+<Behaviour>soilSample1.siltyLoamThickness = siltyLoamThickness</Behaviour>
+<ObjectList>
+<Object rdf:resource="http://142.3.27.23/~harrisonr/petrol_rem_sel.owl#soilSample1"/>
+</ObjectList>
+<PreCondition/>
+<TestSuite>
+<TestSetup/>
+<TestCaseList>
+<TestCase>
+<TestCaseName>testMeasureSiltyLoamThickness</TestCaseName>
+<TestCaseCode>MeasureSiltyLoamThickness(10.0)
+
+assert(soilSample1.siltyLoamThickness == 10.0)</TestCaseCode>
+</TestCase>
+</TestCaseList>
+</TestSuite>
+</Task>
+<Task>
+<Name>MeasureSiltyClayLoamThickness</Name>
+<Documentation/>
+<SubTaskList/>
+<DependencyList/>
+<TaskArgList>
+<TaskArg>
+<VarType>float</VarType>
+<VarName>siltyClayLoamThickness</VarName>
+</TaskArg>
+</TaskArgList>
+<TaskReturn/>
+<Behaviour>soilSample1.siltyClayLoamThickness = siltyClayLoamThickness</Behaviour>
+<ObjectList>
+<Object rdf:resource="http://142.3.27.23/~harrisonr/petrol_rem_sel.owl#soilSample1"/>
+</ObjectList>
+<PreCondition/>
+<TestSuite>
+<TestSetup/>
+<TestCaseList>
+<TestCase>
+<TestCaseName>testMeasureSiltyClayLoamThickness</TestCaseName>
+<TestCaseCode>MeasureSiltyClayLoamThickness(10.0)
+
+assert(soilSample1.siltyClayLoamThickness == 10.0)</TestCaseCode>
+</TestCase>
+</TestCaseList>
+</TestSuite>
+</Task>
+<Task>
+<Name>MeasureClayLoamThickness</Name>
+<Documentation/>
+<SubTaskList/>
+<DependencyList/>
+<TaskArgList>
+<TaskArg>
+<VarType>float</VarType>
+<VarName>clayLoamThickness</VarName>
+</TaskArg>
+</TaskArgList>
+<TaskReturn/>
+<Behaviour>soilSample1.clayLoamThickness = clayLoamThickness</Behaviour>
+<ObjectList>
+<Object rdf:resource="http://142.3.27.23/~harrisonr/petrol_rem_sel.owl#soilSample1"/>
+</ObjectList>
+<PreCondition/>
+<TestSuite>
+<TestSetup/>
+<TestCaseList>
+<TestCase>
+<TestCaseName>testMeasureClayLoamThickness</TestCaseName>
+<TestCaseCode>MeasureClayLoamThickness(10.0)
+
+assert(soilSample1.clayLoamThickness == 10.0)</TestCaseCode>
+</TestCase>
+</TestCaseList>
+</TestSuite>
+</Task>
+<Task>
+<Name>MeasureLoamySandThickness</Name>
+<Documentation/>
+<SubTaskList/>
+<DependencyList/>
+<TaskArgList>
+<TaskArg>
+<VarType>float</VarType>
+<VarName>loamySandThickness</VarName>
+</TaskArg>
+</TaskArgList>
+<TaskReturn/>
+<Behaviour>soilSample1.loamySandThickness = loamySandThickness</Behaviour>
+<ObjectList>
+<Object rdf:resource="http://142.3.27.23/~harrisonr/petrol_rem_sel.owl#soilSample1"/>
+</ObjectList>
+<PreCondition/>
+<TestSuite>
+<TestSetup/>
+<TestCaseList>
+<TestCase>
+<TestCaseName>testMeasureLoamySandThickness</TestCaseName>
+<TestCaseCode>MeasureLoamySandThickness(10.0)
+
+assert(soilSample1.loamySandThickness == 10.0)</TestCaseCode>
+</TestCase>
+</TestCaseList>
+</TestSuite>
+</Task>
+<Task>
+<Name>MeasureSoilTypePercentages</Name>
+<Documentation/>
+<SubTaskList/>
+<DependencyList/>
+<TaskArgList>
+<TaskArg>
+<VarType>float</VarType>
+<VarName>sandPercentage</VarName>
+</TaskArg>
+<TaskArg>
+<VarType>float</VarType>
+<VarName>siltPercentage</VarName>
+</TaskArg>
+<TaskArg>
+<VarType>float</VarType>
+<VarName>clayPercentage</VarName>
+</TaskArg>
+<TaskArg>
+<VarType>float</VarType>
+<VarName>gravelPercentage</VarName>
+</TaskArg>
+</TaskArgList>
+<TaskReturn/>
+<Behaviour>MeasureSandPercentage(sandPercentage)
+MeasureSiltPercentage(siltPercentage)
+MeasureClayPercentage(clayPercentage)
+MeasureGravelPercentage(gravelPercentage)</Behaviour>
+<ObjectList>
+<Object rdf:resource="http://142.3.27.23/~harrisonr/petrol_rem_sel.owl#soilSample1"/>
+</ObjectList>
+<PreCondition/>
+<TestSuite>
+<TestSetup/>
+<TestCaseList>
+<TestCase>
+<TestCaseName>testMeasureSoilTypePercentages</TestCaseName>
+<TestCaseCode>MeasureSoilTypePercentages(50.0, 25.0, 15.0, 10.0)
+
+assert(soilSample1.sandPercentage == 50.0 and
+            soilSample1.siltPercentage == 25.0 and
+            soilSample1.clayPercentage == 15.0 and
+            soilSample1.gravelPercentage == 10.0)</TestCaseCode>
+</TestCase>
+</TestCaseList>
+</TestSuite>
+</Task>
+<Task>
+<Name>MeasureMoisturePercentage</Name>
+<Documentation/>
+<SubTaskList/>
+<DependencyList/>
+<TaskArgList>
+<TaskArg>
+<VarType>float</VarType>
+<VarName>moisturePercentage</VarName>
+</TaskArg>
+</TaskArgList>
+<TaskReturn/>
+<Behaviour>soilSamplingExp.moisturePercentage = moisturePercentage</Behaviour>
+<ObjectList>
+<Object rdf:resource="http://142.3.27.23/~harrisonr/petrol_rem_sel.owl#soilSamplingExp"/>
+</ObjectList>
+<PreCondition/>
+<TestSuite>
+<TestSetup/>
+<TestCaseList>
+<TestCase>
+<TestCaseName>testMeasureMoisturePercentage</TestCaseName>
+<TestCaseCode>MeasureMoisturePercentage(10.0)
+
+assert(soilSamplingExp.moisturePercentage == 10.0)</TestCaseCode>
+</TestCase>
+</TestCaseList>
+</TestSuite>
+</Task>
+<Task>
+<Name>DetermineSoilHydraulicConductivity</Name>
+<Documentation/>
+<SubTaskList/>
+<DependencyList/>
+<TaskArgList>
+<TaskArg>
+<VarType>string</VarType>
+<VarName>isotropy</VarName>
+</TaskArg>
+<TaskArg>
+<VarType>string</VarType>
+<VarName>heterogeneity</VarName>
+</TaskArg>
+</TaskArgList>
+<TaskReturn/>
+<Behaviour>SetSoilHydraulicConductivity(isotropy, heterogeneity)</Behaviour>
+<ObjectList>
+<Object rdf:resource="http://142.3.27.23/~harrisonr/petrol_rem_sel.owl#soilSample1"/>
+</ObjectList>
+<PreCondition/>
+<TestSuite>
+<TestSetup/>
+<TestCaseList>
+<TestCase>
+<TestCaseName>testDetermineSoilHydraulicConductivity</TestCaseName>
+<TestCaseCode>DetermineSoilHydraulicConductivity("isotropic", "heterogeneous")
+
+assert(soilSample1.hydraulicConductivity == "simple")</TestCaseCode>
+</TestCase>
+</TestCaseList>
+</TestSuite>
+</Task>
+<Task>
+<Name>SetSoilHeterogeneity</Name>
+<Documentation/>
+<SubTaskList/>
+<DependencyList/>
+<TaskArgList>
+<TaskArg>
+<VarType>float</VarType>
+<VarName>contributionFactor</VarName>
+</TaskArg>
+</TaskArgList>
+<TaskReturn/>
+<Behaviour>if (contributionFactor &lt;= 0.2)
+{
+    soilSample1.soilHeterogeneity = "homogeneous" 
+}
+else if (contributionFactor &gt; 0.2 and contributionFactor &lt; 0.8)
+{
+    soilSample1.soilHeterogeneity = "heterogeneous"
+}
+else 
+{
+    soilSample1.soilHeterogeneity = "extremely heterogeneous"
+}
+</Behaviour>
+<ObjectList>
+<Object rdf:resource="http://142.3.27.23/~harrisonr/petrol_rem_sel.owl#soilSample1"/>
+</ObjectList>
+<PreCondition/>
+<TestSuite>
+<TestSetup/>
+<TestCaseList>
+<TestCase>
+<TestCaseName>testHomogeneous</TestCaseName>
+<TestCaseCode>SetSoilHeterogeneity(0.1)
+
+assert(soilSample1.soilHeterogeneity == "homogeneous")</TestCaseCode>
+</TestCase>
+<TestCase>
+<TestCaseName>testHeterogeneous</TestCaseName>
+<TestCaseCode>SetSoilHeterogeneity(0.7)
+
+assert(soilSample1.soilHeterogeneity == "heterogeneous")</TestCaseCode>
+</TestCase>
+<TestCase>
+<TestCaseName>testExtremelyHeterogeneous</TestCaseName>
+<TestCaseCode>SetSoilHeterogeneity(0.8)
+
+assert(soilSample1.soilHeterogeneity == "extremely heterogeneous")</TestCaseCode>
+</TestCase>
+</TestCaseList>
+</TestSuite>
+</Task>
+<Task>
+<Name>CalculateSoilTextureContributionFactor</Name>
+<Documentation/>
+<SubTaskList/>
+<DependencyList/>
+<TaskArgList/>
+<TaskReturn/>
+<Behaviour># the values are loaded from a database
+soilSample1.soilTextureContributionFactor = 0.1</Behaviour>
+<ObjectList>
+<Object rdf:resource="http://142.3.27.23/~harrisonr/petrol_rem_sel.owl#soilSample1"/>
+</ObjectList>
+<PreCondition/>
+<TestSuite>
+<TestSetup/>
+<TestCaseList/>
+</TestSuite>
+</Task>
+<Task>
+<Name>CalculateVerticalHydraulicConductivity</Name>
+<Documentation/>
+<SubTaskList/>
+<DependencyList/>
+<TaskArgList/>
+<TaskReturn/>
+<Behaviour>float soilThickness
+soilThickness = soilSample1.sandThickness + soilSample1.sandyClayThickness + soilSample1.sandyLoamThickness + soilSample1.sandyClayLoamThickness + soilSample1.siltThickness + soilSample1.siltyClayThickness + soilSample1.siltyLoamThickness + soilSample1.siltyClayLoamThickness + soilSample1.clayThickness + soilSample1.clayLoamThickness + soilSample1.loamThickness + soilSample1.loamySandThickness
+
+soilSample1.verticalHydraulicConductivity = soilSample1.sampleDepth / (soilThickness / soilSample1.horizontalHydraulicConductivity)</Behaviour>
+<ObjectList>
+<Object rdf:resource="http://142.3.27.23/~harrisonr/petrol_rem_sel.owl#soilSample1"/>
+</ObjectList>
+<PreCondition/>
+<TestSuite>
+<TestSetup/>
+<TestCaseList>
+<TestCase>
+<TestCaseName>testCalculateVerticalHydraulicConductivity</TestCaseName>
+<TestCaseCode>soilSample1.sandThickness = 15.0
+soilSample1.sandyClayThickness = 14.0
+soilSample1.sandyLoamThickness = 13.0
+soilSample1.sandyClayLoamThickness = 12.0
+soilSample1.siltThickness = 11.0
+soilSample1.siltyClayThickness = 10.0
+soilSample1.siltyLoamThickness - 9.0
+soilSample1.siltyClayLoamThickness = 8.0
+soilSample1.clayThickness = 7.0
+soilSample1.clayLoamThickness = 6.0
+soilSample1.loamThickness = 5.0
+soilSample1.loamySandThickness = 4.0
+soilSample1.sampleDepth = 200.0
+soilSample1.horizontalHydraulicConductivity = 10.0
+
+CalculateVerticalHydraulicConductivity()
+
+assert(soilSample1.verticalHydraulicConductivity == 17.54386)</TestCaseCode>
+</TestCase>
+</TestCaseList>
+</TestSuite>
+</Task>
+<Task>
+<Name>DetermineSoilHydraulicPermeability</Name>
+<Documentation/>
+<SubTaskList/>
+<DependencyList/>
+<TaskArgList/>
+<TaskReturn/>
+<Behaviour>SetSoilHydraulicPermeability()</Behaviour>
+<ObjectList/>
+<PreCondition/>
+<TestSuite>
+<TestSetup/>
+<TestCaseList/>
+</TestSuite>
+</Task>
+<Task>
+<Name>DetermineSoilHeterogeneity</Name>
+<Documentation/>
+<SubTaskList/>
+<DependencyList/>
+<TaskArgList>
+<TaskArg>
+<VarType>float</VarType>
+<VarName>contributionFactor</VarName>
+</TaskArg>
+</TaskArgList>
+<TaskReturn/>
+<Behaviour>SetSoilHeterogeneity(contributionFactor)</Behaviour>
+<ObjectList>
+<Object rdf:resource="http://142.3.27.23/~harrisonr/petrol_rem_sel.owl#soilSample1"/>
+</ObjectList>
+<PreCondition/>
+<TestSuite>
+<TestSetup/>
+<TestCaseList>
+<TestCase>
+<TestCaseName>testDetermineSoilHeterogeneity</TestCaseName>
+<TestCaseCode>DetermineSoilHeterogeneity(0.1)
+
+assert(soilSample1.soilHeterogeneity == "homogeneous")</TestCaseCode>
+</TestCase>
+</TestCaseList>
+</TestSuite>
+</Task>
+<Task>
+<Name>DetermineSoilIsotropy</Name>
+<Documentation/>
+<SubTaskList/>
+<DependencyList/>
+<TaskArgList>
+<TaskArg>
+<VarType>float</VarType>
+<VarName>horizontalHydraulicConductivity</VarName>
+</TaskArg>
+<TaskArg>
+<VarType>float</VarType>
+<VarName>verticalHydraulicConductivity</VarName>
+</TaskArg>
+</TaskArgList>
+<TaskReturn/>
+<Behaviour>SetSoilIsotropy(horizontalHydraulicConductivity, verticalHydraulicConductivity)</Behaviour>
+<ObjectList>
+<Object rdf:resource="http://142.3.27.23/~harrisonr/petrol_rem_sel.owl#soilSample1"/>
+</ObjectList>
+<PreCondition/>
+<TestSuite>
+<TestSetup/>
+<TestCaseList>
+<TestCase>
+<TestCaseName>testDetermineSoilIsotropy</TestCaseName>
+<TestCaseCode>SetSoilIsotropy(1.0, 2.0)
+
+assert(soilSample1.isotropy == "isotropic")</TestCaseCode>
+</TestCase>
+</TestCaseList>
+</TestSuite>
+</Task>
+<Task>
+<Name>SetSiteHydraulicConductivity</Name>
+<Documentation/>
+<SubTaskList/>
+<DependencyList/>
+<TaskArgList>
+<TaskArg>
+<VarType>string</VarType>
+<VarName>soilHeterogeneity</VarName>
+</TaskArg>
+<TaskArg>
+<VarType>string</VarType>
+<VarName>soilIsotropy</VarName>
+</TaskArg>
+<TaskArg>
+<VarType>string</VarType>
+<VarName>soilPermeability</VarName>
+</TaskArg>
+</TaskArgList>
+<TaskReturn/>
+<Behaviour>if ((soilHeterogeneity == "homogeneous" and soilIsotropy == "isotropic" and soilPermeability == "high")
+    or
+    (soilHeterogeneity == "homogeneous" and soilIsotropy == "isotropic" and soilPermeability == "medium")
+    or
+    (soilHeterogeneity == "homogeneous" and soilIsotropy == "isotropic" and soilPermeability == "low")
+    or
+    (soilHeterogeneity == "heterogeneous" and soilIsotropy == "isotropic" and soilPermeability == "high")
+    or
+    (soilHeterogeneity == "heterogeneous" and soilIsotropy == "isotropic" and soilPermeability == "medium")
+    or 
+    (soilHeterogeneity == "heterogeneous" and soilIsotropy == "isotropic" and soilPermeability == "low")
+    or
+    (soilHeterogeneity == "extremely heterogeneous" and soilIsotropty == "anisotropic" and soilPermeability == "high"))
+{
+   site.hydraulicConductivity = "simple"
+}
+else if ((soilHeterogeneity == "homogeneous" and soilIsotropy == "isotropic" and soilPermeability == "extremely low")
+    or
+    (soilHeterogeneity == "extremely heterogeneous" and soilIsotropy == "isotropic" and soilPermeability == "high")
+    or
+    (soilHeterogeneity == "extremely heterogeneous" and soilIsotropy == "isotropic" and soilPermeability == "medium")
+    or
+    (soilHeterogeneity == "heterogeneous" and soilIsotropy == "anisotropic" and soilPermeability == "high")
+    or
+    (soilHeterogeneity == "heterogeneous" and soilIsotropy == "anisotropic" and soilPermeability == "medium"))
+{
+    site.hydraulicConductivity = "complex"
+}
+</Behaviour>
+<ObjectList>
+<Object rdf:resource="http://142.3.27.23/~harrisonr/petrol_rem_sel.owl#site"/>
+</ObjectList>
+<PreCondition/>
+<TestSuite>
+<TestSetup/>
+<TestCaseList>
+<TestCase>
+<TestCaseName>testSimpleHydraulicConductivity</TestCaseName>
+<TestCaseCode>SetSiteHydraulicConductivity("homogeneous", "isotropic", "high")
+
+assert(site.hydraulicConductivity == "simple")</TestCaseCode>
+</TestCase>
+<TestCase>
+<TestCaseName>testComplexHydraulicConductivity</TestCaseName>
+<TestCaseCode>SetSiteHydraulicConductivity("homogeneous", "isotropic", "extremely low")
+
+assert(site.hydraulicConductivity == "complex")</TestCaseCode>
+</TestCase>
+</TestCaseList>
+</TestSuite>
+</Task>
+<Task>
+<Name>CollectSoilSamples</Name>
+<Documentation/>
+<SubTaskList/>
+<DependencyList/>
+<TaskArgList/>
+<TaskReturn/>
+<Behaviour># soilSample1 should really be an input, but objects cannot yet be used as input parameters
+soilSamplingExp.soilSample = soilSample1</Behaviour>
+<ObjectList>
+<Object rdf:resource="http://142.3.27.23/~harrisonr/petrol_rem_sel.owl#soilSamplingExp"/>
+<Object rdf:resource="http://142.3.27.23/~harrisonr/petrol_rem_sel.owl#soilSample1"/>
+</ObjectList>
+<PreCondition/>
+<TestSuite>
+<TestSetup/>
+<TestCaseList>
+<TestCase>
+<TestCaseName>testCollectSoilSamples</TestCaseName>
+<TestCaseCode>CollectSoilSamples()
+
+assert(true)
+
+</TestCaseCode>
+</TestCase>
+</TestCaseList>
+</TestSuite>
+</Task>
+<Task>
+<Name>SetMediaType</Name>
+<Documentation/>
+<SubTaskList/>
+<DependencyList/>
+<TaskArgList>
+<TaskArg>
+<VarType>float</VarType>
+<VarName>moisturePercentage</VarName>
+</TaskArg>
+</TaskArgList>
+<TaskReturn/>
+<Behaviour>if (moisturePercentage &lt; 25.0)
+{
+  soilSamplingExp.mediaType = "soil"
+}
+else if (moisturePercentage &gt;= 25.0 and moisturePercentage &lt; 100.0)
+{
+  soilSamplingExp.mediaType = "soilgroundwater"
+}
+else if (moisturePercentage &gt;= 100.0)
+{
+  soilSamplingExp.mediaType = "groundwater"
+}</Behaviour>
+<ObjectList>
+<Object rdf:resource="http://142.3.27.23/~harrisonr/petrol_rem_sel.owl#soilSamplingExp"/>
+</ObjectList>
+<PreCondition/>
+<TestSuite>
+<TestSetup/>
+<TestCaseList>
+<TestCase>
+<TestCaseName>testSoilType</TestCaseName>
+<TestCaseCode>SetMediaType(10.0)
+
+assert(soilSamplingExp.soilType == "soil")</TestCaseCode>
+</TestCase>
+<TestCase>
+<TestCaseName>testSoilGroundwaterType</TestCaseName>
+<TestCaseCode>SetMediaType(50.0)
+
+assert(soilSamplingExp.soilType == "soilgroundwater")</TestCaseCode>
+</TestCase>
+<TestCase>
+<TestCaseName>testGroundwaterType</TestCaseName>
+<TestCaseCode>SetMediaType(100.0)
+
+assert(soilSamplingExp.soilType == "groundwater")</TestCaseCode>
+</TestCase>
+</TestCaseList>
+</TestSuite>
+</Task>
+<Task>
+<Name>SetSoilType</Name>
+<Documentation/>
+<SubTaskList/>
+<DependencyList/>
+<TaskArgList>
+<TaskArg>
+<VarType>float</VarType>
+<VarName>calcSandPercentage</VarName>
+</TaskArg>
+<TaskArg>
+<VarType>float</VarType>
+<VarName>calcSiltPercentage</VarName>
+</TaskArg>
+<TaskArg>
+<VarType>float</VarType>
+<VarName>calcClayPercentage</VarName>
+</TaskArg>
+</TaskArgList>
+<TaskReturn/>
+<Behaviour>string soilType
+float distance
+float minDis
+int i
+int j
+
+minDis = 1.0
+i = 1
+
+while (i &lt;= 12)
+{  
+  float iclay
+  iclay = GetIdealClayValue(i)    
+  
+  float isand
+  isand = GetIdealSandValue(i)
+    
+  float isilt
+  isilt = GetIdealSiltValue(i)   
+ 
+  distance = sqrt((calcClayPercentage - iclay) ** 2.0 + (calcSandPercentage - isand) ** 2.0 + (calcSiltPercentage - isilt) ** 2.0)
+  
+  if (minDis &gt;= distance)
+  {
+    minDis = distance
+    j = i
+  }
+  
+  if (j == 1)
+  {
+    soilType = "clay"
+  }
+  else if (j == 2)
+  {
+    soilType = "silty clay"
+  }
+  else if (j == 3)
+  {
+    soilType = "sandy clay"
+  }
+  else if (j == 4)
+  {
+    soilType = "silty clay loam"
+  }
+  else if (j == 5)
+  {
+    soilType = "clay loam"
+  }
+  else if (j == 6)
+  {
+    soilType = "sandy clay loam"
+  }
+  else if (j == 7)
+  {
+    soilType = "silt loam"
+  }
+  else if (j == 8)
+  {
+    soilType = "silt"
+  }
+  else if (j == 9)
+  {
+    soilType = "loam"
+  }
+  else if (j == 10)
+  {
+    soilType = "sandy loam"
+  }
+  else if (j == 11)
+  {
+    soilType = "loamy sand"
+  }
+  else if (j == 12)
+  {
+    soilType = "sand"
+  }  
+    
+  i = i + 1
+
+}
+
+soilSample1.soilType = soilType</Behaviour>
+<ObjectList>
+<Object rdf:resource="http://142.3.27.23/~harrisonr/petrol_rem_sel.owl#soilSample1"/>
+</ObjectList>
+<PreCondition/>
+<TestSuite>
+<TestSetup/>
+<TestCaseList>
+<TestCase>
+<TestCaseName>testClay</TestCaseName>
+<TestCaseCode>CalculateSoilTypePercentages(0.05, 0.05, 0.8)
+
+SetSoilType(soilSample1.calculatedSandPercentage, soilSample1.calculatedSiltPercentage, soilSample1.calculatedClayPercentage)
+
+assert(soilSample1.soilType == "clay")
+</TestCaseCode>
+</TestCase>
+<TestCase>
+<TestCaseName>testClayLoam</TestCaseName>
+<TestCaseCode>CalculateSoilTypePercentages(0.25, 0.25, 0.4)
+
+SetSoilType(soilSample1.calculatedSandPercentage, soilSample1.calculatedSiltPercentage, soilSample1.calculatedClayPercentage)
+
+assert(soilSample1.soilType == "clay loam")</TestCaseCode>
+</TestCase>
+</TestCaseList>
+</TestSuite>
+</Task>
+<Task>
+<Name>SetSoilIsotropy</Name>
+<Documentation/>
+<SubTaskList/>
+<DependencyList/>
+<TaskArgList>
+<TaskArg>
+<VarType>float</VarType>
+<VarName>horizontalHydraulicConductivity</VarName>
+</TaskArg>
+<TaskArg>
+<VarType>float</VarType>
+<VarName>verticalHydraulicConductivity</VarName>
+</TaskArg>
+</TaskArgList>
+<TaskReturn/>
+<Behaviour>float result
+result = horizontalHydraulicConductivity / verticalHydraulicConductivity
+
+if (result &lt; 2.0)
+{
+    soilSample1.isotropy = "isotropic"
+}
+else if (result &gt;= 2.0)
+{
+    soilSample1.isotropy = "anisotropic"
+}
+
+</Behaviour>
+<ObjectList>
+<Object rdf:resource="http://142.3.27.23/~harrisonr/petrol_rem_sel.owl#soilSample1"/>
+</ObjectList>
+<PreCondition/>
+<TestSuite>
+<TestSetup/>
+<TestCaseList>
+<TestCase>
+<TestCaseName>testIsotropic</TestCaseName>
+<TestCaseCode>float horizontalHydraulicConductivity
+horizontalHydraulicConductivity = 1.0
+
+float verticalHydraulicConductivity
+verticalHydraulicConductivity = 2.0
+
+SetSoilIsotropy(horizontalHydraulicConductivity, verticalHydraulicConductivity)
+
+assert(soilSample1.isotropy == "isotropic")</TestCaseCode>
+</TestCase>
+<TestCase>
+<TestCaseName>testAnisotropic</TestCaseName>
+<TestCaseCode>float horizontalHydraulicConductivity
+horizontalHydraulicConductivity = 5.0
+
+float verticalHydraulicConductivity
+verticalHydraulicConductivity = 2.0
+
+SetSoilIsotropy(horizontalHydraulicConductivity, verticalHydraulicConductivity)
+
+assert(soilSample1.isotropy == "anisotropic")</TestCaseCode>
+</TestCase>
+</TestCaseList>
+</TestSuite>
+</Task>
+<Task>
+<Name>MeasureSiteArea</Name>
+<Documentation/>
+<SubTaskList/>
+<DependencyList/>
+<TaskArgList>
+<TaskArg>
+<VarType>int</VarType>
+<VarName>area</VarName>
+</TaskArg>
+</TaskArgList>
+<TaskReturn/>
+<Behaviour>site.siteArea = area</Behaviour>
+<ObjectList>
+<Object rdf:resource="http://142.3.27.23/~harrisonr/petrol_rem_sel.owl#site"/>
+</ObjectList>
+<PreCondition/>
+<TestSuite>
+<TestSetup/>
+<TestCaseList/>
+</TestSuite>
+</Task>
+<Task>
+<Name>MeasureSiteVolume</Name>
+<Documentation/>
+<SubTaskList/>
+<DependencyList/>
+<TaskArgList>
+<TaskArg>
+<VarType>int</VarType>
+<VarName>volume</VarName>
+</TaskArg>
+</TaskArgList>
+<TaskReturn/>
+<Behaviour>site.siteVolume = volume</Behaviour>
+<ObjectList/>
+<PreCondition/>
+<TestSuite>
+<TestSetup/>
+<TestCaseList/>
+</TestSuite>
+</Task>
+<Task>
+<Name>CalcWeightedNormalizedBenzeneConcentration</Name>
+<Documentation/>
+<SubTaskList/>
+<DependencyList/>
+<TaskArgList/>
+<TaskReturn/>
+<Behaviour>soilSamplingExp.benzeneConcentration = soilSamplingExp.benzeneConcentration / skStandard.skBenzene * benzene.contaminationWeight</Behaviour>
+<ObjectList>
+<Object rdf:resource="http://142.3.27.23/~harrisonr/petrol_rem_sel.owl#skStandard"/>
+<Object rdf:resource="http://142.3.27.23/~harrisonr/petrol_rem_sel.owl#soilSamplingExp"/>
+<Object rdf:resource="http://142.3.27.23/~harrisonr/petrol_rem_sel.owl#benzene"/>
+</ObjectList>
+<PreCondition/>
+<TestSuite>
+<TestSetup/>
+<TestCaseList>
+<TestCase>
+<TestCaseName>testCalcWeightedNormalizedBenzeneConcentration</TestCaseName>
+<TestCaseCode>soilSamplingExp.benzeneConcentration = 0.5
+skStandard.skBenzene = 0.2
+benzene.contaminationWeight = 0.1
+
+CalcWeightedNormalizedBenzeneConcentration()
+
+assert(soilSamplingExp.benzeneConcentration == 0.25)</TestCaseCode>
+</TestCase>
+</TestCaseList>
+</TestSuite>
+</Task>
+<Task>
+<Name>CalcWeightedNormalizedTolueneConcentration</Name>
+<Documentation/>
+<SubTaskList/>
+<DependencyList/>
+<TaskArgList/>
+<TaskReturn/>
+<Behaviour>soilSamplingExp.tolueneConcentration = soilSamplingExp.tolueneConcentration / skStandard.skToluene * toluene.contaminationWeight</Behaviour>
+<ObjectList>
+<Object rdf:resource="http://142.3.27.23/~harrisonr/petrol_rem_sel.owl#soilSamplingExp"/>
+<Object rdf:resource="http://142.3.27.23/~harrisonr/petrol_rem_sel.owl#skStandard"/>
+<Object rdf:resource="http://142.3.27.23/~harrisonr/petrol_rem_sel.owl#toluene"/>
+</ObjectList>
+<PreCondition/>
+<TestSuite>
+<TestSetup/>
+<TestCaseList>
+<TestCase>
+<TestCaseName>testCalcWeightedNormalizedTolueneConcentration</TestCaseName>
+<TestCaseCode>soilSamplingExp.tolueneConcentration = 0.5
+skStandard.skToluene = 0.2
+toluene.contaminationWeight = 0.1
+
+CalcWeightedNormalizedTolueneConcentration()
+
+assert(soilSamplingExp.tolueneConcentration == 0.25)</TestCaseCode>
+</TestCase>
+</TestCaseList>
+</TestSuite>
+</Task>
+<Task>
+<Name>CalcWeightedNormalizedEthylBenzeneConcentration</Name>
+<Documentation/>
+<SubTaskList/>
+<DependencyList/>
+<TaskArgList/>
+<TaskReturn/>
+<Behaviour>soilSamplingExp.ethylBenzeneConcentration = soilSamplingExp.ethylBenzeneConcentration / skStandard.skEthylBenzene * ethylBenzene.contaminationWeight</Behaviour>
+<ObjectList>
+<Object rdf:resource="http://142.3.27.23/~harrisonr/petrol_rem_sel.owl#ethylBenzene"/>
+<Object rdf:resource="http://142.3.27.23/~harrisonr/petrol_rem_sel.owl#skStandard"/>
+<Object rdf:resource="http://142.3.27.23/~harrisonr/petrol_rem_sel.owl#soilSamplingExp"/>
+</ObjectList>
+<PreCondition/>
+<TestSuite>
+<TestSetup/>
+<TestCaseList>
+<TestCase>
+<TestCaseName>testCalcWeightedNormalizedEthylBenzeneConcentration</TestCaseName>
+<TestCaseCode>soilSamplingExp.ethylBenzeneConcentration = 0.5
+skStandard.skEthylBenzene = 0.2
+ethylBenzene.contaminationWeight = 0.1
+
+CalcWeightedNormalizedEthylBenzeneConcentration()
+
+assert(soilSamplingExp.ethylBenzeneConcentration == 0.25)</TestCaseCode>
+</TestCase>
+</TestCaseList>
+</TestSuite>
+</Task>
+<Task>
+<Name>MeasureXylenesConcentration</Name>
+<Documentation/>
+<SubTaskList/>
+<DependencyList/>
+<TaskArgList/>
+<TaskReturn/>
+<Behaviour>soilSamplingExp.xylenesConcentration = xylenes.chemicalConcentration</Behaviour>
+<ObjectList>
+<Object rdf:resource="http://142.3.27.23/~harrisonr/petrol_rem_sel.owl#xylenes"/>
+<Object rdf:resource="http://142.3.27.23/~harrisonr/petrol_rem_sel.owl#soilSamplingExp"/>
+</ObjectList>
+<PreCondition/>
+<TestSuite>
+<TestSetup/>
+<TestCaseList>
+<TestCase>
+<TestCaseName>testXylenesConcentration</TestCaseName>
+<TestCaseCode>xylenes.chemicalConcentration = 10.0
+
+MeasureXylenesConcentration()
+
+assert(soilSamplingExp.xylenesConcentration == 10.0)</TestCaseCode>
+</TestCase>
+</TestCaseList>
+</TestSuite>
+</Task>
+<Task>
+<Name>CalcWeightedNormalizedXylenesConcentration</Name>
+<Documentation/>
+<SubTaskList/>
+<DependencyList/>
+<TaskArgList/>
+<TaskReturn/>
+<Behaviour>soilSamplingExp.xylenesConcentration = soilSamplingExp.xylenesConcentration / skStandard.skXylenes * xylenes.contaminationWeight</Behaviour>
+<ObjectList>
+<Object rdf:resource="http://142.3.27.23/~harrisonr/petrol_rem_sel.owl#xylenes"/>
+<Object rdf:resource="http://142.3.27.23/~harrisonr/petrol_rem_sel.owl#skStandard"/>
+<Object rdf:resource="http://142.3.27.23/~harrisonr/petrol_rem_sel.owl#soilSamplingExp"/>
+</ObjectList>
+<PreCondition/>
+<TestSuite>
+<TestSetup/>
+<TestCaseList>
+<TestCase>
+<TestCaseName>testCalcWeightedNormalizedXylenesConcentration</TestCaseName>
+<TestCaseCode>soilSamplingExp.xylenesConcentration = 0.5
+skStandard.skXylenes = 0.2
+xylenes.contaminationWeight = 0.1
+
+CalcWeightedNormalizedXylenesConcentration()
+
+assert(soilSamplingExp.xylenesConcentration == 0.25)</TestCaseCode>
+</TestCase>
+</TestCaseList>
+</TestSuite>
+</Task>
+<Task>
+<Name>SumPollutantConcentrationValues</Name>
+<Documentation/>
+<SubTaskList/>
+<DependencyList/>
+<TaskArgList/>
+<TaskReturn/>
+<Behaviour>soilSamplingExp.contaminantionConcentration = soilSamplingExp.benzeneConcentration + soilSamplingExp.tolueneConcentration + soilSamplingExp.xylenesConcentration</Behaviour>
+<ObjectList>
+<Object rdf:resource="http://142.3.27.23/~harrisonr/petrol_rem_sel.owl#soilSamplingExp"/>
+</ObjectList>
+<PreCondition/>
+<TestSuite>
+<TestSetup/>
+<TestCaseList>
+<TestCase>
+<TestCaseName>testSumPollutantConcentrationValues</TestCaseName>
+<TestCaseCode>soilSamplingExp.benzeneConcentration = 0.5
+skStandard.skBenzene = 0.2
+benzene.contaminationWeight = 0.1
+CalcWeightedNormalizedBenzeneConcentration()
+
+soilSamplingExp.tolueneConcentration = 0.5
+skStandard.skToluene = 0.2
+toluene.contaminationWeight = 0.1
+CalcWeightedNormalizedTolueneConcentration()
+
+soilSamplingExp.ethylBenzeneConcentration = 0.5
+skStandard.skEthylBenzene = 0.2
+ethylBenzene.contaminationWeight = 0.1
+CalcWeightedNormalizedEthylBenzeneConcentration()
+
+soilSamplingExp.xylenesConcentration = 0.5
+skStandard.skXylenes = 0.2
+xylenes.contaminationWeight = 0.1
+CalcWeightedNormalizedXylenesConcentration()
+
+SumPollutantConcentrationValues()
+
+assert(soilSamplingExp.contaminationConcentration == 1.0)</TestCaseCode>
+</TestCase>
+</TestCaseList>
+</TestSuite>
+</Task>
+<Task>
+<Name>DetermineSiteSize</Name>
+<Documentation/>
+<SubTaskList/>
+<DependencyList>
+<Dependency>MeasureSiteArea</Dependency>
+<Dependency>MeasureSiteVolume</Dependency>
+<Dependency>SetSiteSize</Dependency>
+</DependencyList>
+<TaskArgList>
+<TaskArg>
+<VarType>int</VarType>
+<VarName>siteArea</VarName>
+</TaskArg>
+<TaskArg>
+<VarType>int</VarType>
+<VarName>siteVolume</VarName>
+</TaskArg>
+</TaskArgList>
+<TaskReturn>site.siteSize</TaskReturn>
+<Behaviour>MeasureSiteArea(siteArea)
+MeasureSiteVolume(siteVolume)
+SetSiteSize(site.siteArea, site.siteVolume)</Behaviour>
+<ObjectList>
+<Object rdf:resource="http://142.3.27.23/~harrisonr/petrol_rem_sel.owl#site"/>
+</ObjectList>
+<PreCondition/>
+<TestSuite>
+<TestSetup/>
+<TestCaseList>
+<TestCase>
+<TestCaseName>testDetermineSiteSize</TestCaseName>
+<TestCaseCode>string result
+result = DetermineSiteSize(100, 1000)
+
+assert(result == "small")
+</TestCaseCode>
+</TestCase>
+</TestCaseList>
+</TestSuite>
+</Task>
+<Task>
+<Name>DetermineMedia</Name>
+<Documentation/>
+<SubTaskList/>
+<DependencyList/>
+<TaskArgList>
+<TaskArg>
+<VarType>float</VarType>
+<VarName>moisturePercentage</VarName>
+</TaskArg>
+</TaskArgList>
+<TaskReturn>soilSamplingExp.mediaType</TaskReturn>
+<Behaviour>SetMediaType(moisturePercentage)</Behaviour>
+<ObjectList>
+<Object rdf:resource="http://142.3.27.23/~harrisonr/petrol_rem_sel.owl#soilSamplingExp"/>
+</ObjectList>
+<PreCondition/>
+<TestSuite>
+<TestSetup/>
+<TestCaseList>
+<TestCase>
+<TestCaseName>testDetermineMedia</TestCaseName>
+<TestCaseCode>string result
+result = DetermineMedia(5.0)
+
+assert(result == "soil")</TestCaseCode>
+</TestCase>
+</TestCaseList>
+</TestSuite>
+</Task>
+<Task>
+<Name>DetermineContaminantType</Name>
+<Documentation/>
+<SubTaskList/>
+<DependencyList/>
+<TaskArgList/>
+<TaskReturn/>
+<Behaviour>SoilSampling()
+DetermineSubstancesInSample()
+DeterminePollutantTypesInSoil()
+MeasurePollutantConcentration()</Behaviour>
+<ObjectList/>
+<PreCondition/>
+<TestSuite>
+<TestSetup/>
+<TestCaseList/>
+</TestSuite>
+</Task>
+<Task>
+<Name>DetermineContaminantionLevel</Name>
+<Documentation/>
+<SubTaskList/>
+<DependencyList/>
+<TaskArgList/>
+<TaskReturn/>
+<Behaviour>CalcWeightedNormalizedBenzeneConcentration()
+CalcWeightedNormalizedTolueneConcentration()
+CalcWeightedNormalizedEthylBenzeneConcentration()
+CalcWeightedNormalizedXylenesConcentration()
+SumPollutantConcentrationValues()
+SetContaminationLevel()</Behaviour>
+<ObjectList/>
+<PreCondition/>
+<TestSuite>
+<TestSetup/>
+<TestCaseList/>
+</TestSuite>
+</Task>
+<Task>
+<Name>DetermineContaminationPhase</Name>
+<Documentation/>
+<SubTaskList/>
+<DependencyList>
+<Dependency>SetContaminationPhase</Dependency>
+</DependencyList>
+<TaskArgList>
+<TaskArg>
+<VarType>string</VarType>
+<VarName>phase</VarName>
+</TaskArg>
+</TaskArgList>
+<TaskReturn/>
+<Behaviour>SetContaminationPhase(phase)</Behaviour>
+<ObjectList>
+<Object rdf:resource="http://142.3.27.23/~harrisonr/petrol_rem_sel.owl#soilSamplingExp"/>
+</ObjectList>
+<PreCondition/>
+<TestSuite>
+<TestSetup/>
+<TestCaseList>
+<TestCase>
+<TestCaseName>testDetermineContaminationPhase</TestCaseName>
+<TestCaseCode>DetermineContaminationPhase("free")
+
+assert(soilSamplingExp.contaminantPhase == "free")</TestCaseCode>
+</TestCase>
+</TestCaseList>
+</TestSuite>
+</Task>
+<Task>
+<Name>SetRemediationMethod</Name>
+<Documentation/>
+<SubTaskList/>
+<DependencyList/>
+<TaskArgList/>
+<TaskReturn/>
+<Behaviour>if (soilSamplingExp.mediaType == "soil" and soilSamplingExp.hydraulicConductivity == "complex" and site.siteSize == "large" and 
+     soilSamplingExp.contaminantPhase == "residual" and soilSamplingExp.contaminationLevel == "low")
+{   
+    soilSamplingExp.remediationMethod = compostingTechnology
+}
+else if (soilSamplingExp.mediaType == "soilgroundwater" and soilSamplingExp.hydraulicConductivity == "complex" and site.siteSize == "large" and 
+     soilSamplingExp.contaminantPhase == "free" and soilSamplingExp.contaminationLevel == "low")
+{   
+    soilSamplingExp.remediationMethod = inSituSteamExtractionTreatment
+}
+else if (soilSamplingExp.mediaType == "soilgroundwater" and soilSamplingExp.hydraulicConductivity == "complex" and site.siteSize == "small" and 
+     soilSamplingExp.contaminantPhase == "residual" and soilSamplingExp.contaminationLevel == "low")
+{   
+    soilSamplingExp.remediationMethod = chemicalOxidationSystem
+}
+else if (soilSamplingExp.mediaType == "soil" and soilSamplingExp.hydraulicConductivity == "complex" and site.siteSize == "small" and 
+     soilSamplingExp.contaminantPhase == "residual" and soilSamplingExp.contaminationLevel == "low")
+{   
+    soilSamplingExp.remediationMethod = desorptionSystemProcess
+}
+else if (soilSamplingExp.mediaType == "soil" and soilSamplingExp.hydraulicConductivity == "simple" and site.siteSize == "small" and 
+     soilSamplingExp.contaminantPhase == "residual" and soilSamplingExp.contaminationLevel == "low")
+{   
+    soilSamplingExp.remediationMethod = inSituVitrification
+}
+else if (soilSamplingExp.mediaType == "soilgroundwater" and soilSamplingExp.hydraulicConductivity == "simple" and site.siteSize == "small" and 
+     soilSamplingExp.contaminantPhase == "residual" and soilSamplingExp.contaminationLevel == "low")
+{   
+    soilSamplingExp.remediationMethod = solventExtraction
+}
+else if (soilSamplingExp.mediaType == "soilgroundwater" and soilSamplingExp.hydraulicConductivity == "simple" and site.siteSize == "large" and 
+     soilSamplingExp.contaminantPhase == "free" and soilSamplingExp.contaminationLevel == "low")
+{   
+    soilSamplingExp.remediationMethod = airSparging
+}
+else if (soilSamplingExp.mediaType == "soilgroundwater" and soilSamplingExp.hydraulicConductivity == "simple" and site.siteSize == "large" and 
+     soilSamplingExp.contaminantPhase == "residual" and soilSamplingExp.contaminationLevel == "low")
+{   
+    soilSamplingExp.remediationMethod = bioremediation
+}
+else if (soilSamplingExp.mediaType == "soil" and soilSamplingExp.hydraulicConductivity == "simple" and site.siteSize == "large" and 
+     soilSamplingExp.contaminantPhase == "free" and soilSamplingExp.contaminationLevel == "low")
+{   
+    soilSamplingExp.remediationMethod = soilVaporExtraction
+}
+else if (soilSamplingExp.mediaType == "soil" and soilSamplingExp.hydraulicConductivity == "complex" and site.siteSize == "small" and 
+     soilSamplingExp.contaminantPhase == "free" and soilSamplingExp.contaminationLevel == "low")
+{   
+    soilSamplingExp.remediationMethod = thermalDesorption
+}
+else if (soilSamplingExp.mediaType == "soilgroundwater" and soilSamplingExp.hydraulicConductivity == "simple" and site.siteSize == "large" and 
+     soilSamplingExp.contaminantPhase == "free" and soilSamplingExp.contaminationLevel == "high")
+{   
+    soilSamplingExp.remediationMethod = inSituChemicalExtraction
+}
+else if (soilSamplingExp.mediaType == "soil" and soilSamplingExp.hydraulicConductivity == "simple" and site.siteSize == "large" and 
+     soilSamplingExp.contaminantPhase == "residual" and soilSamplingExp.contaminationLevel == "high")
+{   
+    soilSamplingExp.remediationMethod = inSituLeachingAndChemical
+}
+else if (soilSamplingExp.mediaType == "soilgroundwater" and soilSamplingExp.hydraulicConductivity == "simple" and site.siteSize == "small" and 
+     soilSamplingExp.contaminantPhase == "free" and soilSamplingExp.contaminationLevel == "high")
+{   
+    soilSamplingExp.remediationMethod = exSituChemicalExtraction
+}
+else if (soilSamplingExp.mediaType == "soil" and soilSamplingExp.hydraulicConductivity == "complex" and site.siteSize == "small" and 
+     soilSamplingExp.contaminantPhase == "residual" and soilSamplingExp.contaminationLevel == "high")
+{   
+    soilSamplingExp.remediationMethod = excavation
+}
+else if (soilSamplingExp.mediaType == "soil" and soilSamplingExp.hydraulicConductivity == "complex" and site.siteSize == "small" and 
+     soilSamplingExp.contaminantPhase == "residual" and soilSamplingExp.contaminationLevel == "high")
+{   
+    soilSamplingExp.remediationMethod = excavation
+}
+else if (soilSamplingExp.mediaType == "soilgroundwater" and soilSamplingExp.hydraulicConductivity == "simple" and site.siteSize == "large" and 
+     soilSamplingExp.contaminantPhase == "residual" and soilSamplingExp.contaminationLevel == "high")
+{   
+    soilSamplingExp.remediationMethod = inSituPassiveRemediation
+}
+else if (soilSamplingExp.mediaType == "soilgroundwater" and soilSamplingExp.hydraulicConductivity == "complex" and site.siteSize == "small" and 
+     soilSamplingExp.contaminantPhase == "residual" and soilSamplingExp.contaminationLevel == "high")
+{   
+    soilSamplingExp.remediationMethod = inSituSlurryWalls
+}
+  </Behaviour>
+<ObjectList>
+<Object rdf:resource="http://142.3.27.23/~harrisonr/petrol_rem_sel.owl#soilSamplingExp"/>
+<Object rdf:resource="http://142.3.27.23/~harrisonr/petrol_rem_sel.owl#site"/>
+<Object rdf:resource="http://142.3.27.23/~harrisonr/petrol_rem_sel.owl#compostingTechnology"/>
+<Object rdf:resource="http://142.3.27.23/~harrisonr/petrol_rem_sel.owl#inSituSteamExtractionTreatment"/>
+<Object rdf:resource="http://142.3.27.23/~harrisonr/petrol_rem_sel.owl#chemicalOxidationSystem"/>
+<Object rdf:resource="http://142.3.27.23/~harrisonr/petrol_rem_sel.owl#desorptionSystemProcess"/>
+<Object rdf:resource="http://142.3.27.23/~harrisonr/petrol_rem_sel.owl#inSituVitrification"/>
+<Object rdf:resource="http://142.3.27.23/~harrisonr/petrol_rem_sel.owl#solventExtraction"/>
+<Object rdf:resource="http://142.3.27.23/~harrisonr/petrol_rem_sel.owl#airSparging"/>
+<Object rdf:resource="http://142.3.27.23/~harrisonr/petrol_rem_sel.owl#bioremediation"/>
+<Object rdf:resource="http://142.3.27.23/~harrisonr/petrol_rem_sel.owl#soilVaporExtraction"/>
+<Object rdf:resource="http://142.3.27.23/~harrisonr/petrol_rem_sel.owl#thermalDesorption"/>
+<Object rdf:resource="http://142.3.27.23/~harrisonr/petrol_rem_sel.owl#inSituChemicalExtraction"/>
+<Object rdf:resource="http://142.3.27.23/~harrisonr/petrol_rem_sel.owl#inSituLeachingAndChemical"/>
+<Object rdf:resource="http://142.3.27.23/~harrisonr/petrol_rem_sel.owl#exSituChemicalExtraction"/>
+<Object rdf:resource="http://142.3.27.23/~harrisonr/petrol_rem_sel.owl#excavation"/>
+<Object rdf:resource="http://142.3.27.23/~harrisonr/petrol_rem_sel.owl#inSituPassiveRemediation"/>
+<Object rdf:resource="http://142.3.27.23/~harrisonr/petrol_rem_sel.owl#inSituSlurryWalls"/>
+</ObjectList>
+<PreCondition/>
+<TestSuite>
+<TestSetup/>
+<TestCaseList>
+<TestCase>
+<TestCaseName>testCompostingTechnology</TestCaseName>
+<TestCaseCode>soilSamplingExp.mediaType = "soil"
+soilSamplingExp.hydraulicConductivity = "complex"
+site.siteSize = "large"
+soilSamplingExp.contaminantPhase = "residual"
+soilSamplingExp.contaminationLevel = "low"
+
+SetRemediationMethod()
+
+assert(soilSamplingExp.remediationMethod == compostingTechnology)</TestCaseCode>
+</TestCase>
+<TestCase>
+<TestCaseName>testInSituSteamExtractionTreatment</TestCaseName>
+<TestCaseCode>soilSamplingExp.mediaType = "soilgroundwater"
+soilSamplingExp.hydraulicConductivity = "complex"
+site.siteSize = "large"
+soilSamplingExp.contaminantPhase = "free"
+soilSamplingExp.contaminationLevel = "low"
+
+SetRemediationMethod()
+
+assert(soilSamplingExp.remediationMethod == inSituSteamExtractionTreatment)</TestCaseCode>
+</TestCase>
+<TestCase>
+<TestCaseName>testChemicalOxidationSystem</TestCaseName>
+<TestCaseCode>soilSamplingExp.mediaType = "soilgroundwater"
+soilSamplingExp.hydraulicConductivity = "complex"
+site.siteSize = "small"
+soilSamplingExp.contaminantPhase = "residual"
+soilSamplingExp.contaminationLevel = "low"
+
+SetRemediationMethod()
+
+assert(soilSamplingExp.remediationMethod == chemicalOxidationSystem)</TestCaseCode>
+</TestCase>
+<TestCase>
+<TestCaseName>testDesorptionSystemProcess</TestCaseName>
+<TestCaseCode>soilSamplingExp.mediaType = "soil"
+soilSamplingExp.hydraulicConductivity = "complex"
+site.siteSize = "small"
+soilSamplingExp.contaminantPhase = "residual"
+soilSamplingExp.contaminationLevel = "low"
+
+SetRemediationMethod()
+
+assert(soilSamplingExp.remediationMethod == desorptionSystemProcess)</TestCaseCode>
+</TestCase>
+<TestCase>
+<TestCaseName>testInSituVitrification</TestCaseName>
+<TestCaseCode>soilSamplingExp.mediaType = "soil"
+soilSamplingExp.hydraulicConductivity = "simple"
+site.siteSize = "small"
+soilSamplingExp.contaminantPhase = "residual"
+soilSamplingExp.contaminationLevel = "low"
+
+SetRemediationMethod()
+
+assert(soilSamplingExp.remediationMethod == inSituVitrification)</TestCaseCode>
+</TestCase>
+<TestCase>
+<TestCaseName>testSolventExtraction</TestCaseName>
+<TestCaseCode>soilSamplingExp.mediaType = "soilgroundwater"
+soilSamplingExp.hydraulicConductivity = "simple"
+site.siteSize = "small"
+soilSamplingExp.contaminantPhase = "residual"
+soilSamplingExp.contaminationLevel = "low"
+
+SetRemediationMethod()
+
+assert(soilSamplingExp.remediationMethod == solventExtraction)</TestCaseCode>
+</TestCase>
+<TestCase>
+<TestCaseName>testAirSparging</TestCaseName>
+<TestCaseCode>soilSamplingExp.mediaType = "soilgroundwater"
+soilSamplingExp.hydraulicConductivity = "simple"
+site.siteSize = "large"
+soilSamplingExp.contaminantPhase = "free"
+soilSamplingExp.contaminationLevel = "low"
+
+SetRemediationMethod()
+
+assert(soilSamplingExp.remediationMethod == airSparging)</TestCaseCode>
+</TestCase>
+<TestCase>
+<TestCaseName>testBioremediation</TestCaseName>
+<TestCaseCode>soilSamplingExp.mediaType = "soilgroundwater"
+soilSamplingExp.hydraulicConductivity = "simple"
+site.siteSize = "large"
+soilSamplingExp.contaminantPhase = "residual"
+soilSamplingExp.contaminationLevel = "low"
+
+SetRemediationMethod()
+
+assert(soilSamplingExp.remediationMethod == bioremediation)</TestCaseCode>
+</TestCase>
+<TestCase>
+<TestCaseName>testSoilVaporExtraction</TestCaseName>
+<TestCaseCode>soilSamplingExp.mediaType = "soil"
+soilSamplingExp.hydraulicConductivity = "simple"
+site.siteSize = "large"
+soilSamplingExp.contaminantPhase = "free"
+soilSamplingExp.contaminationLevel = "low"
+
+SetRemediationMethod()
+
+assert(soilSamplingExp.remediationMethod == soilVaporExtraction)</TestCaseCode>
+</TestCase>
+<TestCase>
+<TestCaseName>testThermalDesorption</TestCaseName>
+<TestCaseCode>soilSamplingExp.mediaType = "soil"
+soilSamplingExp.hydraulicConductivity = "complex"
+site.siteSize = "small"
+soilSamplingExp.contaminantPhase = "free"
+soilSamplingExp.contaminationLevel = "low"
+
+SetRemediationMethod()
+
+assert(soilSamplingExp.remediationMethod == thermalDesorption)</TestCaseCode>
+</TestCase>
+<TestCase>
+<TestCaseName>testInSituChemicalExtraction</TestCaseName>
+<TestCaseCode>soilSamplingExp.mediaType = "soilgroundwater"
+soilSamplingExp.hydraulicConductivity = "simple"
+site.siteSize = "large"
+soilSamplingExp.contaminantPhase = "free"
+soilSamplingExp.contaminationLevel = "high"
+
+SetRemediationMethod()
+
+assert(soilSamplingExp.remediationMethod == inSituChemicalExtraction)</TestCaseCode>
+</TestCase>
+<TestCase>
+<TestCaseName>testInSituLeachingAndChemical</TestCaseName>
+<TestCaseCode>soilSamplingExp.mediaType = "soil"
+soilSamplingExp.hydraulicConductivity = "simple"
+site.siteSize = "large"
+soilSamplingExp.contaminantPhase = "residual"
+soilSamplingExp.contaminationLevel = "high"
+
+SetRemediationMethod()
+
+assert(soilSamplingExp.remediationMethod == inSituLeachingAndChemical)</TestCaseCode>
+</TestCase>
+<TestCase>
+<TestCaseName>testExSituChemicalExtraction</TestCaseName>
+<TestCaseCode>soilSamplingExp.mediaType = "soilgroundwater"
+soilSamplingExp.hydraulicConductivity = "simple"
+site.siteSize = "small"
+soilSamplingExp.contaminantPhase = "free"
+soilSamplingExp.contaminationLevel = "high"
+
+SetRemediationMethod()
+
+assert(soilSamplingExp.remediationMethod == exSituChemicalExtraction)</TestCaseCode>
+</TestCase>
+<TestCase>
+<TestCaseName>testExcavation</TestCaseName>
+<TestCaseCode>soilSamplingExp.mediaType = "soil"
+soilSamplingExp.hydraulicConductivity = "complex"
+site.siteSize = "small"
+soilSamplingExp.contaminantPhase = "residual"
+soilSamplingExp.contaminationLevel = "high"
+
+SetRemediationMethod()
+
+assert(soilSamplingExp.remediationMethod == excavation)</TestCaseCode>
+</TestCase>
+<TestCase>
+<TestCaseName>testInSituPassiveRemediation</TestCaseName>
+<TestCaseCode>soilSamplingExp.mediaType = "soilgroundwater"
+soilSamplingExp.hydraulicConductivity = "simple"
+site.siteSize = "large"
+soilSamplingExp.contaminantPhase = "residual"
+soilSamplingExp.contaminationLevel = "high"
+
+SetRemediationMethod()
+
+assert(soilSamplingExp.remediationMethod == inSituPassiveRemediation)</TestCaseCode>
+</TestCase>
+<TestCase>
+<TestCaseName>testInSituSlurryWalls</TestCaseName>
+<TestCaseCode>soilSamplingExp.mediaType = "soilgroundwater"
+soilSamplingExp.hydraulicConductivity = "complex"
+site.siteSize = "small"
+soilSamplingExp.contaminantPhase = "residual"
+soilSamplingExp.contaminationLevel = "high"
+
+SetRemediationMethod()
+
+assert(soilSamplingExp.remediationMethod == inSituSlurryWalls)</TestCaseCode>
+</TestCase>
+</TestCaseList>
+</TestSuite>
+</Task>
+<Task>
+<Name>SetContaminationLevel</Name>
+<Documentation/>
+<SubTaskList/>
+<DependencyList/>
+<TaskArgList>
+<TaskArg>
+<VarType>float</VarType>
+<VarName>contaminationConcentration</VarName>
+</TaskArg>
+</TaskArgList>
+<TaskReturn/>
+<Behaviour>if (contaminationConcentration &lt; 0.1)
+{
+    soilSamplingExp.contaminationLevel = "low"
+}
+else if (contaminationConcentration &gt;= 0.1 and contaminationConcentration &lt;= 0.8)
+{
+    soilSamplingExp.contaminationLevel = "high"
+}
+else if (contaminationConcentration &gt; 0.8)
+{
+    soilSamplingExp.contaminationLevel = "extremely high"
+}</Behaviour>
+<ObjectList>
+<Object rdf:resource="http://142.3.27.23/~harrisonr/petrol_rem_sel.owl#soilSamplingExp"/>
+</ObjectList>
+<PreCondition/>
+<TestSuite>
+<TestSetup/>
+<TestCaseList>
+<TestCase>
+<TestCaseName>testLow</TestCaseName>
+<TestCaseCode>SetContaminationLevel(0.01)
+
+assert(soilSamplingExp.contaminationLevel == "low")</TestCaseCode>
+</TestCase>
+<TestCase>
+<TestCaseName>testHigh</TestCaseName>
+<TestCaseCode>SetContaminationLevel(0.5)
+
+assert(soilSamplingExp.contaminationLevel == "high")</TestCaseCode>
+</TestCase>
+<TestCase>
+<TestCaseName>testExtremelyHigh</TestCaseName>
+<TestCaseCode>SetContaminationLevel(0.9)
+
+assert(soilSamplingExp.contaminationLevel == "extremely high")</TestCaseCode>
+</TestCase>
+</TestCaseList>
+</TestSuite>
+</Task>
+<Task>
+<Name>CalculateHorizontalHydraulicConductivity</Name>
+<Documentation/>
+<SubTaskList/>
+<DependencyList/>
+<TaskArgList/>
+<TaskReturn/>
+<Behaviour># Need the calculation for this.
+soilSample1.horizontalHydraulicConductivity = 1.0</Behaviour>
+<ObjectList>
+<Object rdf:resource="http://142.3.27.23/~harrisonr/petrol_rem_sel.owl#soilSample1"/>
+</ObjectList>
+<PreCondition/>
+<TestSuite>
+<TestSetup/>
+<TestCaseList/>
+</TestSuite>
+</Task>
+<Task>
+<Name>SetSoilHydraulicConductivity</Name>
+<Documentation/>
+<SubTaskList/>
+<DependencyList/>
+<TaskArgList>
+<TaskArg>
+<VarType>string</VarType>
+<VarName>isotropy</VarName>
+</TaskArg>
+<TaskArg>
+<VarType>string</VarType>
+<VarName>heterogeneity</VarName>
+</TaskArg>
+</TaskArgList>
+<TaskReturn/>
+<Behaviour>if (heterogeneity == "homogeneous")
+{
+  soilSample1.hydraulicConductivity = "simple"
+}
+else if (heterogeneity == "heterogeneous")
+{
+  if (isotropy == "isotropic")
+  {
+    soilSample1.hydraulicConductivity = "simple"
+  }
+  else
+  {
+    soilSample1.hydraulicConductivity = "complex"
+  }
+}
+else if (heterogeneity == "extremely heterogeneous")
+{
+  if (isotropy == "isotropic")
+  {
+    soilSample1.hydraulicConductivity = "complex"
+  }
+  else
+  {
+    soilSample1.hydraulicConductivity = "simple"
+  }
+}</Behaviour>
+<ObjectList>
+<Object rdf:resource="http://142.3.27.23/~harrisonr/petrol_rem_sel.owl#soilSample1"/>
+</ObjectList>
+<PreCondition/>
+<TestSuite>
+<TestSetup/>
+<TestCaseList>
+<TestCase>
+<TestCaseName>testSimple</TestCaseName>
+<TestCaseCode>SetSoilHydraulicConductivity("isotropic", "heterogeneous")
+
+assert(soilSample1.hydraulicConductivity == "simple")</TestCaseCode>
+</TestCase>
+<TestCase>
+<TestCaseName>testComplex</TestCaseName>
+<TestCaseCode>SetSoilHydraulicConductivity("anisotropic", "heterogeneous")
+
+assert(soilSample1.hydraulicConductivity == "complex")</TestCaseCode>
+</TestCase>
+</TestCaseList>
+</TestSuite>
+</Task>
+<Task>
+<Name>MeasureGravelPercentage</Name>
+<Documentation/>
+<SubTaskList/>
+<DependencyList/>
+<TaskArgList>
+<TaskArg>
+<VarType>float</VarType>
+<VarName>gravelPercentage</VarName>
+</TaskArg>
+</TaskArgList>
+<TaskReturn/>
+<Behaviour>soilSample1.gravelPercentage = gravelPercentage</Behaviour>
+<ObjectList>
+<Object rdf:resource="http://142.3.27.23/~harrisonr/petrol_rem_sel.owl#soilSample1"/>
+</ObjectList>
+<PreCondition/>
+<TestSuite>
+<TestSetup/>
+<TestCaseList/>
+</TestSuite>
+</Task>
+<Task>
+<Name>CalculateSoilTypePercentages</Name>
+<Documentation/>
+<SubTaskList/>
+<DependencyList/>
+<TaskArgList>
+<TaskArg>
+<VarType>float</VarType>
+<VarName>measuredSandPercentage</VarName>
+</TaskArg>
+<TaskArg>
+<VarType>float</VarType>
+<VarName>measuredSiltPercentage</VarName>
+</TaskArg>
+<TaskArg>
+<VarType>float</VarType>
+<VarName>measuredClayPercentage</VarName>
+</TaskArg>
+</TaskArgList>
+<TaskReturn/>
+<Behaviour>CalculateClayPercentage(measuredSandPercentage, measuredSiltPercentage, measuredClayPercentage)
+CalculateSandPercentage(measuredSandPercentage, measuredSiltPercentage, measuredClayPercentage)
+CalculateSiltPercentage(measuredSandPercentage, measuredSiltPercentage, measuredClayPercentage)</Behaviour>
+<ObjectList>
+<Object rdf:resource="http://142.3.27.23/~harrisonr/petrol_rem_sel.owl#soilSample1"/>
+</ObjectList>
+<PreCondition/>
+<TestSuite>
+<TestSetup/>
+<TestCaseList>
+<TestCase>
+<TestCaseName>testCalculateSoilTypePercentages</TestCaseName>
+<TestCaseCode>CalculateSoilTypePercentages(50.0, 25.0, 15.0)
+
+assert(soilSample1.calculatedSandPercentage == 0.55555556 and
+            soilSample1.calculatedSiltPercentage == 0.27777778 and
+            soilSample1.calculatedClayPercentage == 0.16666667)</TestCaseCode>
+</TestCase>
+</TestCaseList>
+</TestSuite>
+</Task>
+<Task>
+<Name>CalculateClayPercentage</Name>
+<Documentation/>
+<SubTaskList/>
+<DependencyList/>
+<TaskArgList>
+<TaskArg>
+<VarType>float</VarType>
+<VarName>measuredSandPercentage</VarName>
+</TaskArg>
+<TaskArg>
+<VarType>float</VarType>
+<VarName>measuredSiltPercentage</VarName>
+</TaskArg>
+<TaskArg>
+<VarType>float</VarType>
+<VarName>measuredClayPercentage</VarName>
+</TaskArg>
+</TaskArgList>
+<TaskReturn/>
+<Behaviour>soilSample1.calculatedClayPercentage = measuredClayPercentage / (measuredClayPercentage + measuredSandPercentage + measuredSiltPercentage)</Behaviour>
+<ObjectList>
+<Object rdf:resource="http://142.3.27.23/~harrisonr/petrol_rem_sel.owl#soilSample1"/>
+</ObjectList>
+<PreCondition/>
+<TestSuite>
+<TestSetup/>
+<TestCaseList>
+<TestCase>
+<TestCaseName>testCalculateClayPercentage</TestCaseName>
+<TestCaseCode>CalculateClayPercentage(50.0, 25.0, 15.0)
+
+assert(soilSample1.calculatedClayPercentage == 0.16666667)
+
+</TestCaseCode>
+</TestCase>
+</TestCaseList>
+</TestSuite>
+</Task>
+<Task>
+<Name>CalculateSandPercentage</Name>
+<Documentation/>
+<SubTaskList/>
+<DependencyList/>
+<TaskArgList>
+<TaskArg>
+<VarType>float</VarType>
+<VarName>measuredSandPercentage</VarName>
+</TaskArg>
+<TaskArg>
+<VarType>float</VarType>
+<VarName>measuredSiltPercentage</VarName>
+</TaskArg>
+<TaskArg>
+<VarType>float</VarType>
+<VarName>measuredClayPercentage</VarName>
+</TaskArg>
+</TaskArgList>
+<TaskReturn/>
+<Behaviour>soilSample1.calculatedSandPercentage = measuredSandPercentage / (measuredClayPercentage + measuredSandPercentage + measuredSiltPercentage)</Behaviour>
+<ObjectList>
+<Object rdf:resource="http://142.3.27.23/~harrisonr/petrol_rem_sel.owl#soilSample1"/>
+</ObjectList>
+<PreCondition/>
+<TestSuite>
+<TestSetup/>
+<TestCaseList>
+<TestCase>
+<TestCaseName>testCalculateSandPercentage</TestCaseName>
+<TestCaseCode>CalculateSandPercentage(50.0, 25.0, 15.0)
+
+assert(soilSample1.calculatedSandPercentage == 0.55555556)</TestCaseCode>
+</TestCase>
+</TestCaseList>
+</TestSuite>
+</Task>
+<Task>
+<Name>CalculateSiltPercentage</Name>
+<Documentation/>
+<SubTaskList/>
+<DependencyList/>
+<TaskArgList>
+<TaskArg>
+<VarType>float</VarType>
+<VarName>measuredSandPercentage</VarName>
+</TaskArg>
+<TaskArg>
+<VarType>float</VarType>
+<VarName>measuredSiltPercentage</VarName>
+</TaskArg>
+<TaskArg>
+<VarType>float</VarType>
+<VarName>measuredClayPercentage</VarName>
+</TaskArg>
+</TaskArgList>
+<TaskReturn/>
+<Behaviour>soilSample1.calculatedSiltPercentage = measuredSiltPercentage / (measuredClayPercentage + measuredSandPercentage + measuredSiltPercentage)</Behaviour>
+<ObjectList>
+<Object rdf:resource="http://142.3.27.23/~harrisonr/petrol_rem_sel.owl#soilSample1"/>
+</ObjectList>
+<PreCondition/>
+<TestSuite>
+<TestSetup/>
+<TestCaseList>
+<TestCase>
+<TestCaseName>testCalculateSiltPercentage</TestCaseName>
+<TestCaseCode>CalculateSiltPercentage(50.0, 25.0, 15.0)
+
+assert(soilSample1.calculatedSiltPercentage == 0.27777778)</TestCaseCode>
+</TestCase>
+</TestCaseList>
+</TestSuite>
+</Task>
+<Task>
+<Name>GetIdealClayValue</Name>
+<Documentation/>
+<SubTaskList/>
+<DependencyList/>
+<TaskArgList>
+<TaskArg>
+<VarType>int</VarType>
+<VarName>soilType</VarName>
+</TaskArg>
+</TaskArgList>
+<TaskReturn>value</TaskReturn>
+<Behaviour>float value
+value = 0.0
+
+if (soilType == 1)
+{
+    value = 0.77
+}
+else if (soilType == 2)
+{
+  value = 0.5
+}
+else if (soilType == 3)
+{
+  value = 0.46
+}
+else if (soilType == 4)
+{
+  value = 0.35
+}
+else if (soilType == 5)
+{
+  value = 0.35
+}
+else if (soilType == 6)
+{
+  value = 0.29
+}
+else if (soilType == 7)
+{
+  value = 0.14
+}
+else if (soilType == 8)
+{
+  value = 0.06
+}
+else if (soilType == 9)
+{
+  value = 0.18
+}
+else if (soilType == 10)
+{
+  value = 0.1
+}
+else if (soilType == 11)
+{
+  value = 0.08
+}
+else if (soilType == 12)
+{
+  value = 0.05
+}  </Behaviour>
+<ObjectList/>
+<PreCondition/>
+<TestSuite>
+<TestSetup/>
+<TestCaseList/>
+</TestSuite>
+</Task>
+<Task>
+<Name>GetIdealSandValue</Name>
+<Documentation/>
+<SubTaskList/>
+<DependencyList/>
+<TaskArgList>
+<TaskArg>
+<VarType>int</VarType>
+<VarName>soilType</VarName>
+</TaskArg>
+</TaskArgList>
+<TaskReturn>value</TaskReturn>
+<Behaviour>float value
+value = 0.0
+
+if (soilType == 1)
+{
+    value = 0.22
+}
+else if (soilType == 2)
+{
+  value = 0.1
+}
+else if (soilType == 3)
+{
+  value = 0.54
+}
+else if (soilType == 4)
+{
+  value = 0.1
+}
+else if (soilType == 5)
+{
+  value = 0.33
+}
+else if (soilType == 6)
+{
+  value = 0.62
+}
+else if (soilType == 7)
+{
+  value = 0.25
+}
+else if (soilType == 8)
+{
+  value = 0.1
+}
+else if (soilType == 9)
+{
+  value = 0.38
+}
+else if (soilType == 10)
+{
+  value = 0.6
+}
+else if (soilType == 11)
+{
+  value = 0.8
+}
+else if (soilType == 12)
+{
+  value = 0.93
+}  </Behaviour>
+<ObjectList/>
+<PreCondition/>
+<TestSuite>
+<TestSetup/>
+<TestCaseList/>
+</TestSuite>
+</Task>
+<Task>
+<Name>GetIdealSiltValue</Name>
+<Documentation/>
+<SubTaskList/>
+<DependencyList/>
+<TaskArgList>
+<TaskArg>
+<VarType>int</VarType>
+<VarName>soilType</VarName>
+</TaskArg>
+</TaskArgList>
+<TaskReturn>value</TaskReturn>
+<Behaviour>float value
+value = 0.0
+
+if (soilType == 1)
+{
+    value = 0.2
+}
+else if (soilType == 2)
+{
+  value = 0.5
+}
+else if (soilType == 3)
+{
+  value = 0.1
+}
+else if (soilType == 4)
+{
+  value = 0.56
+}
+else if (soilType == 5)
+{
+  value = 0.34
+}
+else if (soilType == 6)
+{
+  value = 0.19
+}
+else if (soilType == 7)
+{
+  value = 0.25
+}
+else if (soilType == 8)
+{
+  value = 0.9
+}
+else if (soilType == 9)
+{
+  value = 0.39
+}
+else if (soilType == 10)
+{
+  value = 0.25
+}
+else if (soilType == 11)
+{
+  value = 0.15
+}
+else if (soilType == 12)
+{
+  value = 0.08
+}  </Behaviour>
+<ObjectList/>
+<PreCondition/>
+<TestSuite>
+<TestSetup/>
+<TestCaseList/>
+</TestSuite>
+</Task>
+<Task>
+<Name>SetSiteSize</Name>
+<Documentation/>
+<SubTaskList/>
+<DependencyList/>
+<TaskArgList>
+<TaskArg>
+<VarType>int</VarType>
+<VarName>area</VarName>
+</TaskArg>
+<TaskArg>
+<VarType>int</VarType>
+<VarName>volume</VarName>
+</TaskArg>
+</TaskArgList>
+<TaskReturn/>
+<Behaviour>if (area &lt; 1600 and volume &lt; 25000)
+{
+    site.siteSize = "small"
+}
+else if (area &gt;= 1600 and area &lt;= 2000 and
+            volume &gt;= 25000 and volume &lt;= 30000)
+{
+    site.siteSize = "medium"
+}
+else if (area &gt; 2000 and volume &gt; 30000)
+{
+    site.siteSize = "large"
+}</Behaviour>
+<ObjectList>
+<Object rdf:resource="http://142.3.27.23/~harrisonr/petrol_rem_sel.owl#site"/>
+</ObjectList>
+<PreCondition/>
+<TestSuite>
+<TestSetup/>
+<TestCaseList>
+<TestCase>
+<TestCaseName>testSmall</TestCaseName>
+<TestCaseCode>site.siteArea = 1000
+site.siteVolume = 1000
+
+SetSiteSize(site.siteArea, site.siteVolume)
+
+assert(site.siteSize == "small")</TestCaseCode>
+</TestCase>
+<TestCase>
+<TestCaseName>testMedium</TestCaseName>
+<TestCaseCode>site.siteArea = 2000
+site.siteVolume = 30000
+
+SetSiteSize(site.siteArea, site.siteVolume)
+
+assert(site.siteSize == "medium")</TestCaseCode>
+</TestCase>
+<TestCase>
+<TestCaseName>testLarge</TestCaseName>
+<TestCaseCode>site.siteArea = 10000
+site.siteVolume = 300000
+
+SetSiteSize(site.siteArea, site.siteVolume)
+
+assert(site.siteSize == "large")</TestCaseCode>
+</TestCase>
+</TestCaseList>
+</TestSuite>
+</Task>
+<Task>
+<Name>DetermineSoilHydraulicPermeability</Name>
+<Documentation>Preceding tasks:
+1. SoilSampling
+2. CalculateSoilTextureContributionFactor - should this be a part of soilsampling?</Documentation>
+<SubTaskList/>
+<DependencyList/>
+<TaskArgList/>
+<TaskReturn/>
+<Behaviour>CalculateHorizontalHydraulicConductivity()
+CalculateVerticalHydraulicConductivity()
+SetSoilHydraulicConductivity()</Behaviour>
+<ObjectList/>
+<PreCondition/>
+<TestSuite>
+<TestSetup/>
+<TestCaseList/>
+</TestSuite>
+</Task>
+<Task>
+<Name>SetContaminationPhase</Name>
+<Documentation/>
+<SubTaskList/>
+<DependencyList/>
+<TaskArgList>
+<TaskArg>
+<VarType>string</VarType>
+<VarName>phase</VarName>
+</TaskArg>
+</TaskArgList>
+<TaskReturn/>
+<Behaviour>soilSamplingExp.contaminantPhase = phase</Behaviour>
+<ObjectList>
+<Object rdf:resource="http://142.3.27.23/~harrisonr/petrol_rem_sel.owl#soilSamplingExp"/>
+</ObjectList>
+<PreCondition/>
+<TestSuite>
+<TestSetup/>
+<TestCaseList>
+<TestCase>
+<TestCaseName>testFree</TestCaseName>
+<TestCaseCode>SetContaminationPhase("free")
+
+assert(soilSamplingExp.contaminantPhase == "free")</TestCaseCode>
+</TestCase>
+<TestCase>
+<TestCaseName>testResidual</TestCaseName>
+<TestCaseCode>SetContaminationPhase("residual")
+
+assert(soilSamplingExp.contaminantPhase == "residual")</TestCaseCode>
+</TestCase>
+<TestCase>
+<TestCaseName>testFreeAndResidual</TestCaseName>
+<TestCaseCode>SetContaminationPhase("free and residual")
+
+assert(soilSamplingExp.contaminantPhase == "free and residual")</TestCaseCode>
+</TestCase>
+</TestCaseList>
+</TestSuite>
+</Task>
+<Task>
+<Name>SetSoilHydraulicPermeability</Name>
+<Documentation/>
+<SubTaskList/>
+<DependencyList/>
+<TaskArgList/>
+<TaskReturn/>
+<Behaviour>soilSample1.soilHydraulicPermeability = "medium"</Behaviour>
+<ObjectList>
+<Object rdf:resource="http://142.3.27.23/~harrisonr/petrol_rem_sel.owl#soilSample1"/>
+</ObjectList>
+<PreCondition/>
+<TestSuite>
+<TestSetup/>
+<TestCaseList/>
+</TestSuite>
+</Task>
+</TaskList>
+<ObjectiveList>
+<Objective>
+<Name>SoilSampling</Name>
+<Documentation/>
+<TaskPriorityList>
+<TaskPriority>
+<Name>tp_SetSamplingMethod</Name>
+<Documentation/>
+<Task>SetSamplingMethod</Task>
+<Priority>1.0</Priority>
+</TaskPriority>
+<TaskPriority>
+<Name>tp_SetNumSamplingPoints</Name>
+<Documentation/>
+<Task>SetNumSamplingPoints</Task>
+<Priority>2.0</Priority>
+</TaskPriority>
+<TaskPriority>
+<Name>tp_CollectSoilSamples</Name>
+<Documentation/>
+<Task>CollectSoilSamples</Task>
+<Priority>3.0</Priority>
+</TaskPriority>
+<TaskPriority>
+<Name>tp_SetWaterPercentage</Name>
+<Documentation/>
+<Task>MeasureMoisturePercentage</Task>
+<Priority>4.0</Priority>
+</TaskPriority>
+<TaskPriority>
+<Name>tp_DetermineMedia</Name>
+<Documentation/>
+<Task>DetermineMedia</Task>
+<Priority>5.0</Priority>
+</TaskPriority>
+<TaskPriority>
+<Name>tp_MeasureSoilThickness</Name>
+<Documentation/>
+<Task>MeasureSoilThickness</Task>
+<Priority>6.0</Priority>
+</TaskPriority>
+<TaskPriority>
+<Name>tp_SetSamplingDepth</Name>
+<Documentation/>
+<Task>CalculateSamplingDepth</Task>
+<Priority>7.0</Priority>
+</TaskPriority>
+<TaskPriority>
+<Name>tp_MeasureSoilTypePercentages</Name>
+<Documentation/>
+<Task>MeasureSoilTypePercentages</Task>
+<Priority>8.0</Priority>
+</TaskPriority>
+<TaskPriority>
+<Name>tp_CalculateSoilTypePercentages</Name>
+<Documentation/>
+<Task>CalculateSoilTypePercentages</Task>
+<Priority>9.0</Priority>
+</TaskPriority>
+<TaskPriority>
+<Name>tp_MeasureContaminantConcentration</Name>
+<Documentation/>
+<Task>MeasureContaminantConcentration</Task>
+<Priority>10.0</Priority>
+</TaskPriority>
+</TaskPriorityList>
+</Objective>
+<Objective>
+<Name>DetermineSiteHydraulicConductivity</Name>
+<Documentation/>
+<TaskPriorityList>
+<TaskPriority>
+<Name>tp_DetermineSoilType</Name>
+<Documentation/>
+<Task>DetermineSoilType</Task>
+<Priority>1.0</Priority>
+</TaskPriority>
+<TaskPriority>
+<Name>tp_CalculateSoilTextureContributionFactor</Name>
+<Documentation/>
+<Task>CalculateSoilTextureContributionFactor</Task>
+<Priority>2.0</Priority>
+</TaskPriority>
+<TaskPriority>
+<Name>tp_CalculateHorizontalHydraulicConductivity</Name>
+<Documentation/>
+<Task>CalculateHorizontalHydraulicConductivity</Task>
+<Priority>3.0</Priority>
+</TaskPriority>
+<TaskPriority>
+<Name>tp_CalculateVerticalHydraulicConductivity</Name>
+<Documentation/>
+<Task>CalculateVerticalHydraulicConductivity</Task>
+<Priority>4.0</Priority>
+</TaskPriority>
+<TaskPriority>
+<Name>tp_GetSoilHeterogeneity</Name>
+<Documentation/>
+<Task>DetermineSoilHeterogeneity</Task>
+<Priority>5.0</Priority>
+</TaskPriority>
+<TaskPriority>
+<Name>tp_GetSoilIsotropy</Name>
+<Documentation/>
+<Task>DetermineSoilIsotropy</Task>
+<Priority>6.0</Priority>
+</TaskPriority>
+<TaskPriority>
+<Name>tp_DetermineSoilHydraulicPermeability</Name>
+<Documentation/>
+<Task>DetermineSoilHydraulicPermeability</Task>
+<Priority>7.0</Priority>
+</TaskPriority>
+<TaskPriority>
+<Name>tp_DetermineSoilHydraulicConductivity</Name>
+<Documentation/>
+<Task>DetermineSoilHydraulicConductivity</Task>
+<Priority>8.0</Priority>
+</TaskPriority>
+<TaskPriority>
+<Name>tp_SetSiteHydraulicConductivity</Name>
+<Documentation/>
+<Task>SetSiteHydraulicConductivity</Task>
+<Priority>9.0</Priority>
+</TaskPriority>
+</TaskPriorityList>
+</Objective>
+<Objective>
+<Name>DetermineSoilHeterogeneity</Name>
+<Documentation>Preceeding tasks:
+1. CalculateSoilTextureContributionFactor</Documentation>
+<TaskPriorityList>
+<TaskPriority>
+<Name>tp_DetermineSoilHeterogeneity</Name>
+<Documentation/>
+<Task>SetSoilHeterogeneity</Task>
+<Priority>1.0</Priority>
+</TaskPriority>
+</TaskPriorityList>
+</Objective>
+<Objective>
+<Name>DetermineMedia</Name>
+<Documentation>These tasks must occur before this objective can
+be attempted:
+CollectSoilSamples()
+MeasureMoisturePercentage()</Documentation>
+<TaskPriorityList>
+<TaskPriority>
+<Name>tp_SetMediaType</Name>
+<Documentation/>
+<Task>SetMediaType</Task>
+<Priority>1.0</Priority>
+</TaskPriority>
+</TaskPriorityList>
+</Objective>
+<Objective>
+<Name>DetermineSoilType</Name>
+<Documentation/>
+<TaskPriorityList>
+<TaskPriority>
+<Name>tp_SetSoilType</Name>
+<Documentation/>
+<Task>SetSoilType</Task>
+<Priority>1.0</Priority>
+</TaskPriority>
+</TaskPriorityList>
+</Objective>
+<Objective>
+<Name>DetermineSiteSize</Name>
+<Documentation/>
+<TaskPriorityList>
+<TaskPriority>
+<Name>tp_SetSiteArea</Name>
+<Documentation/>
+<Task>MeasureSiteArea</Task>
+<Priority>1.0</Priority>
+</TaskPriority>
+<TaskPriority>
+<Name>tp_SetSiteVolume</Name>
+<Documentation/>
+<Task>MeasureSiteVolume</Task>
+<Priority>2.0</Priority>
+</TaskPriority>
+<TaskPriority>
+<Name>tp_SetSiteSize</Name>
+<Documentation/>
+<Task>SetSiteSize</Task>
+<Priority>3.0</Priority>
+</TaskPriority>
+</TaskPriorityList>
+</Objective>
+<Objective>
+<Name>DetermineContaminationLevel</Name>
+<Documentation/>
+<TaskPriorityList>
+<TaskPriority>
+<Name>tp_AdjustBenzeneConcentration</Name>
+<Documentation/>
+<Task>CalcWeightedNormalizedBenzeneConcentration</Task>
+<Priority>1.0</Priority>
+</TaskPriority>
+<TaskPriority>
+<Name>tp_AdjustTolueneConcentration</Name>
+<Documentation/>
+<Task>CalcWeightedNormalizedTolueneConcentration</Task>
+<Priority>2.0</Priority>
+</TaskPriority>
+<TaskPriority>
+<Name>tp_AdjustEthylBenzeneConcentration</Name>
+<Documentation/>
+<Task>CalcWeightedNormalizedEthylBenzeneConcentration</Task>
+<Priority>3.0</Priority>
+</TaskPriority>
+<TaskPriority>
+<Name>tp_AdjustXylenesConcentration</Name>
+<Documentation/>
+<Task>CalcWeightedNormalizedXylenesConcentration</Task>
+<Priority>4.0</Priority>
+</TaskPriority>
+<TaskPriority>
+<Name>tp_SumPollutantConcentrationValues</Name>
+<Documentation/>
+<Task>SumPollutantConcentrationValues</Task>
+<Priority>5.0</Priority>
+</TaskPriority>
+<TaskPriority>
+<Name>tp_SetContaminationLevel</Name>
+<Documentation/>
+<Task>SetContaminationLevel</Task>
+<Priority>6.0</Priority>
+</TaskPriority>
+</TaskPriorityList>
+</Objective>
+<Objective>
+<Name>SelectRemediationMethod</Name>
+<Documentation/>
+<TaskPriorityList>
+<TaskPriority>
+<Name>tp_GetSiteSize</Name>
+<Documentation/>
+<Task>DetermineSiteSize</Task>
+<Priority>1.0</Priority>
+</TaskPriority>
+<TaskPriority>
+<Name>tp_SoilSampling</Name>
+<Documentation/>
+<Task>SoilSampling</Task>
+<Priority>2.0</Priority>
+</TaskPriority>
+<TaskPriority>
+<Name>tp_DetermineSiteHydraulicConductivity</Name>
+<Documentation/>
+<Task>DetermineSiteHydraulicConductivity</Task>
+<Priority>3.0</Priority>
+</TaskPriority>
+<TaskPriority>
+<Name>tp_GetContaminantionLevel</Name>
+<Documentation/>
+<Task>DetermineContaminantionLevel</Task>
+<Priority>4.0</Priority>
+</TaskPriority>
+<TaskPriority>
+<Name>tp_GetContaminationPhase</Name>
+<Documentation/>
+<Task>DetermineContaminationPhase</Task>
+<Priority>5.0</Priority>
+</TaskPriority>
+<TaskPriority>
+<Name>tp_SetRemediationMethod</Name>
+<Documentation/>
+<Task>SetRemediationMethod</Task>
+<Priority>6.0</Priority>
+</TaskPriority>
+</TaskPriorityList>
+</Objective>
+<Objective>
+<Name>DetermineSoilHydraulicPermeability</Name>
+<Documentation>Preceding tasks:
+1. CalculateHorizontalHydraulicConductivity
+2. CalculateVerticalHydraulicConductivity</Documentation>
+<TaskPriorityList>
+<TaskPriority>
+<Name>tp_SetSoilHydraulicPermeability</Name>
+<Documentation/>
+<Task>SetSoilHydraulicPermeability</Task>
+<Priority>1.0</Priority>
+</TaskPriority>
+</TaskPriorityList>
+</Objective>
+<Objective>
+<Name>DetermineSoilIsotropy</Name>
+<Documentation>Preceeding tasks:
+1. CalculateVerticalHydraulicConductivity
+2. CalculateHorizontalHydraulicConductivity</Documentation>
+<TaskPriorityList>
+<TaskPriority>
+<Name>tp_SetSoilIsotropy</Name>
+<Documentation/>
+<Task>SetSoilIsotropy</Task>
+<Priority>1.0</Priority>
+</TaskPriority>
+</TaskPriorityList>
+</Objective>
+<Objective>
+<Name>DetermineSoilHydraulicConductivity</Name>
+<Documentation>Preceding tasks:
+1. DetermineSoilIsotropy
+2. DetermineSoilHeterogeneity</Documentation>
+<TaskPriorityList>
+<TaskPriority>
+<Name>tp_SetSoilHydraulicConductivity</Name>
+<Documentation/>
+<Task>SetSoilHydraulicConductivity</Task>
+<Priority>1.0</Priority>
+</TaskPriority>
+</TaskPriorityList>
+</Objective>
+<Objective>
+<Name>DetermineContaminationPhase</Name>
+<Documentation/>
+<TaskPriorityList>
+<TaskPriority>
+<Name>tp_SetContaminationPhase</Name>
+<Documentation/>
+<Task>SetContaminationPhase</Task>
+<Priority>1.0</Priority>
+</TaskPriority>
+</TaskPriorityList>
+</Objective>
+</ObjectiveList>
+</DynaProject>

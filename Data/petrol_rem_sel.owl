@@ -1,0 +1,1322 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns="http://142.3.27.23/~harrisonr/petrol_rem_sel.owl#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xml:base="http://142.3.27.23/~harrisonr/petrol_rem_sel.owl">
+  <owl:Ontology rdf:about=""/>
+  <owl:Class rdf:ID="ExSituRemediation">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="PetroleumContaminationRemediation"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="SaskatchewanStandard">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="PetroleumContaminantStandard"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="AirPollutionRemediation">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Remediation"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#PetroleumContaminantStandard">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Standard"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="SoilGroundWater">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Soil"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="GroundWater"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="NonOrganicChemicalContaminant">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="ChemicalContaminant"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="WaterPollutionStandard">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Standard"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="SamplingExperiment">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Experiment"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#Standard">
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Remediation"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Media"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Gas"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Experiment"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Contaminant"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:ID="AirSamplingExperiment">
+    <rdfs:subClassOf rdf:resource="#SamplingExperiment"/>
+  </owl:Class>
+  <owl:Class rdf:about="#PetroleumContaminationRemediation">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Remediation"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#Gas">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Gas is an object</rdfs:comment>
+    <owl:disjointWith rdf:resource="#Standard"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Remediation"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Media"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Experiment"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Contaminant"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:ID="Water">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Media"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Soil"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:ID="WaterPollutionRemediation">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Remediation"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Sample"/>
+  <owl:Class rdf:about="#GroundWater">
+    <rdfs:subClassOf rdf:resource="#Water"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Media">
+    <owl:disjointWith rdf:resource="#Standard"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Remediation"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Gas"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Experiment"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Contaminant"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:about="#Contaminant">
+    <owl:disjointWith rdf:resource="#Standard"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Remediation"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Media"/>
+    <owl:disjointWith rdf:resource="#Gas"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Experiment"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:about="#ChemicalContaminant">
+    <rdfs:subClassOf rdf:resource="#Contaminant"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Experiment">
+    <owl:disjointWith rdf:resource="#Standard"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Remediation"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Media"/>
+    <owl:disjointWith rdf:resource="#Gas"/>
+    <owl:disjointWith rdf:resource="#Contaminant"/>
+  </owl:Class>
+  <owl:Class rdf:ID="WaterSamplingExperiment">
+    <rdfs:subClassOf rdf:resource="#SamplingExperiment"/>
+  </owl:Class>
+  <owl:Class rdf:ID="AirPollutionStandard">
+    <rdfs:subClassOf rdf:resource="#Standard"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Remediation">
+    <owl:disjointWith rdf:resource="#Media"/>
+    <owl:disjointWith rdf:resource="#Gas"/>
+    <owl:disjointWith rdf:resource="#Experiment"/>
+    <owl:disjointWith rdf:resource="#Contaminant"/>
+    <owl:disjointWith rdf:resource="#Standard"/>
+  </owl:Class>
+  <owl:Class rdf:ID="InSituRemediation">
+    <rdfs:subClassOf rdf:resource="#PetroleumContaminationRemediation"/>
+  </owl:Class>
+  <owl:Class rdf:ID="SoilSample">
+    <rdfs:subClassOf rdf:resource="#Sample"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Soil">
+    <owl:disjointWith rdf:resource="#Water"/>
+    <rdfs:subClassOf rdf:resource="#Media"/>
+  </owl:Class>
+  <owl:Class rdf:ID="AlbertaStandard">
+    <rdfs:subClassOf rdf:resource="#PetroleumContaminantStandard"/>
+  </owl:Class>
+  <owl:Class rdf:ID="SoilSamplingExperiment">
+    <rdfs:subClassOf rdf:resource="#SamplingExperiment"/>
+  </owl:Class>
+  <owl:Class rdf:ID="OrganicChemicalContaminant">
+    <rdfs:subClassOf rdf:resource="#ChemicalContaminant"/>
+  </owl:Class>
+  <owl:Class rdf:ID="USEPAStandard">
+    <rdfs:subClassOf rdf:resource="#PetroleumContaminantStandard"/>
+  </owl:Class>
+  <owl:ObjectProperty rdf:ID="sample">
+    <rdfs:domain rdf:resource="#SoilSamplingExperiment"/>
+    <rdfs:range rdf:resource="#Media"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="soilSample">
+    <rdfs:range rdf:resource="#SoilSample"/>
+    <rdfs:domain rdf:resource="#SoilSamplingExperiment"/>
+  </owl:ObjectProperty>
+  <owl:FunctionalProperty rdf:ID="standardContaminantConcentrationInSoilAndGroundWater">
+    <rdfs:range>
+      <owl:DataRange>
+        <owl:oneOf rdf:parseType="Resource">
+          <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+          >residential</rdf:first>
+          <rdf:rest rdf:parseType="Resource">
+            <rdf:rest rdf:parseType="Resource">
+              <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+              >agricultural</rdf:first>
+              <rdf:rest rdf:parseType="Resource">
+                <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+                >potable water</rdf:first>
+                <rdf:rest rdf:parseType="Resource">
+                  <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                  <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+                  >non-potable water</rdf:first>
+                </rdf:rest>
+              </rdf:rest>
+            </rdf:rest>
+            <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >industrial</rdf:first>
+          </rdf:rest>
+        </owl:oneOf>
+      </owl:DataRange>
+    </rdfs:range>
+    <rdfs:domain rdf:resource="#PetroleumContaminantStandard"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="clayLoamThickness">
+    <rdfs:domain rdf:resource="#SoilSample"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="measuredSiltPercentage">
+    <rdfs:domain rdf:resource="#SoilSample"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="contaminantPhase">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range>
+      <owl:DataRange>
+        <owl:oneOf rdf:parseType="Resource">
+          <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+          >free</rdf:first>
+          <rdf:rest rdf:parseType="Resource">
+            <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >residual</rdf:first>
+            <rdf:rest rdf:parseType="Resource">
+              <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+              >free and residual</rdf:first>
+              <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:rest>
+          </rdf:rest>
+        </owl:oneOf>
+      </owl:DataRange>
+    </rdfs:range>
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#Contaminant"/>
+          <owl:Class rdf:about="#SoilSamplingExperiment"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="standardContaminantConcentrationInGroundWater">
+    <rdfs:range>
+      <owl:DataRange>
+        <owl:oneOf rdf:parseType="Resource">
+          <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+          >potable water</rdf:first>
+          <rdf:rest rdf:parseType="Resource">
+            <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >non-potable water</rdf:first>
+            <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+          </rdf:rest>
+        </owl:oneOf>
+      </owl:DataRange>
+    </rdfs:range>
+    <rdfs:domain rdf:resource="#PetroleumContaminantStandard"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="siteArea">
+    <rdfs:domain rdf:resource="#Media"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="waterType">
+    <rdfs:range>
+      <owl:DataRange>
+        <owl:oneOf rdf:parseType="Resource">
+          <rdf:rest rdf:parseType="Resource">
+            <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >non-potable water</rdf:first>
+          </rdf:rest>
+          <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+          >potable water</rdf:first>
+        </owl:oneOf>
+      </owl:DataRange>
+    </rdfs:range>
+    <rdfs:domain rdf:resource="#GroundWater"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="calculatedSiltPercentage">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="#SoilSample"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="ethylBenzeneConcentration">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    <rdfs:domain rdf:resource="#SoilSamplingExperiment"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="siltyClayThickness">
+    <rdfs:domain rdf:resource="#SoilSample"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="efficiency">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >percentage</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    <rdfs:domain rdf:resource="#Remediation"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="depthOfSite">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="#Media"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >in feet</rdfs:comment>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="contaminantType">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:range rdf:resource="#ChemicalContaminant"/>
+    <rdfs:domain rdf:resource="#SoilSamplingExperiment"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="skEthylBenzene">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    <rdfs:domain rdf:resource="#SaskatchewanStandard"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="tolueneConcentration">
+    <rdfs:domain rdf:resource="#SoilSamplingExperiment"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="contaminationLevel">
+    <rdfs:range>
+      <owl:DataRange>
+        <owl:oneOf rdf:parseType="Resource">
+          <rdf:rest rdf:parseType="Resource">
+            <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >medium</rdf:first>
+            <rdf:rest rdf:parseType="Resource">
+              <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+              >high</rdf:first>
+              <rdf:rest rdf:parseType="Resource">
+                <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+                >extremely high</rdf:first>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+              </rdf:rest>
+            </rdf:rest>
+          </rdf:rest>
+          <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+          >low</rdf:first>
+        </owl:oneOf>
+      </owl:DataRange>
+    </rdfs:range>
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#Contaminant"/>
+          <owl:Class rdf:about="#SoilSamplingExperiment"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="insituRemediationName">
+    <rdfs:domain rdf:resource="#InSituRemediation"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="horizontalHydraulicConductivity">
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#Soil"/>
+          <owl:Class rdf:about="#SoilSample"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="mediaType">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range>
+      <owl:DataRange>
+        <owl:oneOf rdf:parseType="Resource">
+          <rdf:rest rdf:parseType="Resource">
+            <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >groundwater</rdf:first>
+            <rdf:rest rdf:parseType="Resource">
+              <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+              <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+              >soilgroundwater</rdf:first>
+            </rdf:rest>
+          </rdf:rest>
+          <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+          >soil</rdf:first>
+        </owl:oneOf>
+      </owl:DataRange>
+    </rdfs:range>
+    <rdfs:domain rdf:resource="#SamplingExperiment"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="remediationMethod">
+    <rdfs:domain rdf:resource="#SoilSamplingExperiment"/>
+    <rdfs:range rdf:resource="#PetroleumContaminationRemediation"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="siteVolume">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="#Media"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="sandThickness">
+    <rdfs:domain rdf:resource="#SoilSample"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="verticalHydraulicConductivity">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#Soil"/>
+          <owl:Class rdf:about="#SoilSample"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="pH">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    <rdfs:domain rdf:resource="#Water"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="skToluene">
+    <rdfs:domain rdf:resource="#SaskatchewanStandard"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="siteMediaCondition">
+    <rdfs:range>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#Soil"/>
+          <owl:Class rdf:about="#GroundWater"/>
+          <owl:Class rdf:about="#SoilGroundWater"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:range>
+    <rdfs:domain rdf:resource="#Remediation"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="siltyLoamThickness">
+    <rdfs:domain rdf:resource="#SoilSample"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="hydraulicConductivity">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range>
+      <owl:DataRange>
+        <owl:oneOf rdf:parseType="Resource">
+          <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+          >simple</rdf:first>
+          <rdf:rest rdf:parseType="Resource">
+            <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >complex</rdf:first>
+          </rdf:rest>
+        </owl:oneOf>
+      </owl:DataRange>
+    </rdfs:range>
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#Media"/>
+          <owl:Class rdf:about="#SoilSample"/>
+          <owl:Class rdf:about="#SoilSamplingExperiment"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="numSamplingPoints">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="#SamplingExperiment"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="samplingMethodName">
+    <rdfs:domain rdf:resource="#SamplingExperiment"/>
+    <rdfs:range>
+      <owl:DataRange>
+        <owl:oneOf rdf:parseType="Resource">
+          <rdf:rest rdf:parseType="Resource">
+            <rdf:rest rdf:parseType="Resource">
+              <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+              >hollow-stem augers device</rdf:first>
+              <rdf:rest rdf:parseType="Resource">
+                <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+                >continuous split-spoon sampling device</rdf:first>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+              </rdf:rest>
+            </rdf:rest>
+            <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >direct push probes</rdf:first>
+          </rdf:rest>
+          <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+          >device soil sampling</rdf:first>
+        </owl:oneOf>
+      </owl:DataRange>
+    </rdfs:range>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="measuredSandPercentage">
+    <rdfs:domain rdf:resource="#SoilSample"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="soilHeterogeneity">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#Soil"/>
+          <owl:Class rdf:about="#SoilSample"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+    <rdfs:range>
+      <owl:DataRange>
+        <owl:oneOf rdf:parseType="Resource">
+          <rdf:rest rdf:parseType="Resource">
+            <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >heterogeneous</rdf:first>
+            <rdf:rest rdf:parseType="Resource">
+              <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+              >extremely heterogeneous</rdf:first>
+              <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:rest>
+          </rdf:rest>
+          <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+          >homogeneous</rdf:first>
+        </owl:oneOf>
+      </owl:DataRange>
+    </rdfs:range>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="calculatedClayPercentage">
+    <rdfs:domain rdf:resource="#SoilSample"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="reference">
+    <rdfs:domain rdf:resource="#Remediation"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="soilThickness">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="#Soil"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="chemicalConcentration">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    <rdfs:domain rdf:resource="#Contaminant"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="siltThickness">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="#SoilSample"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="cost">
+    <rdfs:domain rdf:resource="#Remediation"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >US $/cubic yard, US $/1000 gallon</rdfs:comment>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="moisturePerctange">
+    <rdfs:domain rdf:resource="#SoilSamplingExperiment"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="clayPercentage">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    <rdfs:domain rdf:resource="#SoilSample"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="soilDepth">
+    <rdfs:domain rdf:resource="#Soil"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="standardContaminantConcentrationInSoil">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range>
+      <owl:DataRange>
+        <owl:oneOf rdf:parseType="Resource">
+          <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+          >residual</rdf:first>
+          <rdf:rest rdf:parseType="Resource">
+            <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >industrial</rdf:first>
+            <rdf:rest rdf:parseType="Resource">
+              <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+              >agricultural</rdf:first>
+              <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:rest>
+          </rdf:rest>
+        </owl:oneOf>
+      </owl:DataRange>
+    </rdfs:range>
+    <rdfs:domain rdf:resource="#PetroleumContaminantStandard"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="tphConcentration">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    <rdfs:domain rdf:resource="#SoilSamplingExperiment"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="skBenzene">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    <rdfs:domain rdf:resource="#SaskatchewanStandard"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="substanceContainedInSoil">
+    <rdfs:domain rdf:resource="#SoilSamplingExperiment"/>
+    <rdfs:range rdf:resource="#ChemicalContaminant"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="skXylenes">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    <rdfs:domain rdf:resource="#SaskatchewanStandard"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="skTotalHydrocarbon">
+    <rdfs:domain rdf:resource="#SaskatchewanStandard"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="porosity">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="#SoilSamplingExperiment"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="siteSize">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="#Media"/>
+    <rdfs:range>
+      <owl:DataRange>
+        <owl:oneOf rdf:parseType="Resource">
+          <rdf:rest rdf:parseType="Resource">
+            <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >medium</rdf:first>
+            <rdf:rest rdf:parseType="Resource">
+              <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+              >large</rdf:first>
+              <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:rest>
+          </rdf:rest>
+          <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+          >small</rdf:first>
+        </owl:oneOf>
+      </owl:DataRange>
+    </rdfs:range>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="contaminationConcentration">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    <rdfs:domain rdf:resource="#SoilSamplingExperiment"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="siltPercentage">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="#SoilSample"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="loamySandThickness">
+    <rdfs:domain rdf:resource="#SoilSample"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="resideIn">
+    <rdfs:domain rdf:resource="#Contaminant"/>
+    <rdfs:range rdf:resource="#Media"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="gravelPercentage">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="#SoilSample"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="exsituRemediationName">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#ExSituRemediation"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="samplingSite">
+    <rdfs:domain rdf:resource="#SoilSamplingExperiment"/>
+    <rdfs:range rdf:resource="#Media"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="sandPercentage">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    <rdfs:domain rdf:resource="#SoilSample"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="siltyClayLoamThickness">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="#SoilSample"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="soilTextureContributionFactor">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="#SoilSample"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="sandyClayLoamThickness">
+    <rdfs:domain rdf:resource="#SoilSample"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="sampleDepth">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >in feet</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    <rdfs:domain rdf:resource="#SoilSample"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="sandyLoamThickness">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    <rdfs:domain rdf:resource="#SoilSample"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="isotropy">
+    <rdfs:range>
+      <owl:DataRange>
+        <owl:oneOf rdf:parseType="Resource">
+          <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+          >isotropic</rdf:first>
+          <rdf:rest rdf:parseType="Resource">
+            <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >anisotropic</rdf:first>
+            <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+          </rdf:rest>
+        </owl:oneOf>
+      </owl:DataRange>
+    </rdfs:range>
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#Soil"/>
+          <owl:Class rdf:about="#SoilSample"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="soilType">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range>
+      <owl:DataRange>
+        <owl:oneOf rdf:parseType="Resource">
+          <rdf:rest rdf:parseType="Resource">
+            <rdf:rest rdf:parseType="Resource">
+              <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+              >sandy loam</rdf:first>
+              <rdf:rest rdf:parseType="Resource">
+                <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+                >clay loam</rdf:first>
+                <rdf:rest rdf:parseType="Resource">
+                  <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+                  >sandy clay</rdf:first>
+                  <rdf:rest rdf:parseType="Resource">
+                    <rdf:rest rdf:parseType="Resource">
+                      <rdf:rest rdf:parseType="Resource">
+                        <rdf:rest rdf:parseType="Resource">
+                          <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+                          >sandy clay loam</rdf:first>
+                          <rdf:rest rdf:parseType="Resource">
+                            <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+                            >silty clay loam</rdf:first>
+                            <rdf:rest rdf:parseType="Resource">
+                              <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+                              >silty clay</rdf:first>
+                              <rdf:rest rdf:parseType="Resource">
+                                <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+                                >silt loam</rdf:first>
+                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                              </rdf:rest>
+                            </rdf:rest>
+                          </rdf:rest>
+                        </rdf:rest>
+                        <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+                        >loam</rdf:first>
+                      </rdf:rest>
+                      <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+                      >loamy sand</rdf:first>
+                    </rdf:rest>
+                    <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+                    >silt</rdf:first>
+                  </rdf:rest>
+                </rdf:rest>
+              </rdf:rest>
+            </rdf:rest>
+            <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >clay</rdf:first>
+          </rdf:rest>
+          <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+          >sand</rdf:first>
+        </owl:oneOf>
+      </owl:DataRange>
+    </rdfs:range>
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#Soil"/>
+          <owl:Class rdf:about="#SoilSample"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="measuredContaminantValue">
+    <rdfs:domain rdf:resource="#Contaminant"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="xylenesConcentration">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    <rdfs:domain rdf:resource="#SoilSamplingExperiment"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="measuredClayPercentage">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    <rdfs:domain rdf:resource="#SoilSample"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="remediationName">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="#Remediation"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="measuredGravelPercentage">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="#SoilSample"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="contaminationWeight">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    <rdfs:domain rdf:resource="#Contaminant"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="loamThickness">
+    <rdfs:domain rdf:resource="#SoilSample"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="clayThickness">
+    <rdfs:domain rdf:resource="#SoilSample"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="soilHydraulicPermeability">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range>
+      <owl:DataRange>
+        <owl:oneOf rdf:parseType="Resource">
+          <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+          >extremely low</rdf:first>
+          <rdf:rest rdf:parseType="Resource">
+            <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >low</rdf:first>
+            <rdf:rest rdf:parseType="Resource">
+              <rdf:rest rdf:parseType="Resource">
+                <rdf:rest rdf:parseType="Resource">
+                  <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+                  >extremely high</rdf:first>
+                  <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                </rdf:rest>
+                <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+                >high</rdf:first>
+              </rdf:rest>
+              <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+              >medium</rdf:first>
+            </rdf:rest>
+          </rdf:rest>
+        </owl:oneOf>
+      </owl:DataRange>
+    </rdfs:range>
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#Soil"/>
+          <owl:Class rdf:about="#SoilSample"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="benzeneConcentration">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="#SoilSamplingExperiment"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="calculatedSandPercentage">
+    <rdfs:domain rdf:resource="#SoilSample"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="sandyClayThickness">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="#SoilSample"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="dateOfUpdate">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+    <rdfs:domain rdf:resource="#Remediation"/>
+  </owl:FunctionalProperty>
+  <PetroleumContaminationRemediation rdf:ID="solventExtraction">
+    <cost rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+    >0.0</cost>
+    <remediationName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></remediationName>
+    <reference rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></reference>
+    <dateOfUpdate rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></dateOfUpdate>
+    <efficiency rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+    >0.0</efficiency>
+  </PetroleumContaminationRemediation>
+  <SaskatchewanStandard rdf:ID="skStandard">
+    <skToluene rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+    >0.2</skToluene>
+    <skEthylBenzene rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >0.2</skEthylBenzene>
+    <skTotalHydrocarbon rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+    >0.0</skTotalHydrocarbon>
+    <skXylenes rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+    >0.2</skXylenes>
+    <skBenzene rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+    >0.2</skBenzene>
+  </SaskatchewanStandard>
+  <Soil rdf:ID="soil">
+    <isotropy rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >anisotropic</isotropy>
+    <soilType rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >clay</soilType>
+    <soilHeterogeneity rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >extremely heterogeneous</soilHeterogeneity>
+    <soilHydraulicPermeability rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >medium</soilHydraulicPermeability>
+    <depthOfSite rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+    >0.0</depthOfSite>
+    <siteVolume rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+    >0</siteVolume>
+    <verticalHydraulicConductivity rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+    >1.0</verticalHydraulicConductivity>
+    <hydraulicConductivity rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >simple</hydraulicConductivity>
+    <siteSize rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >small</siteSize>
+    <siteArea rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+    >0</siteArea>
+    <horizontalHydraulicConductivity rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+    >5.0</horizontalHydraulicConductivity>
+  </Soil>
+  <PetroleumContaminationRemediation rdf:ID="excavation">
+    <cost rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+    >0.0</cost>
+    <reference rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></reference>
+    <remediationName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></remediationName>
+    <efficiency rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+    >0.0</efficiency>
+    <dateOfUpdate rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></dateOfUpdate>
+  </PetroleumContaminationRemediation>
+  <SoilSamplingExperiment rdf:ID="soilSamplingExp">
+    <xylenesConcentration rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+    >0.25</xylenesConcentration>
+    <sandyLoamThickness rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+    >0.0</sandyLoamThickness>
+    <siltyClayThickness rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+    >0.0</siltyClayThickness>
+    <siltPercentage rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+    >0.0</siltPercentage>
+    <contaminantPhase rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >residual</contaminantPhase>
+    <tphConcentration rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+    >0.0</tphConcentration>
+    <contaminationLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >high</contaminationLevel>
+    <sandyClayLoamThickness rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+    >0.0</sandyClayLoamThickness>
+    <soilSample>
+      <SoilSample rdf:ID="soilSample1">
+        <gravelPercentage rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+        >0.1</gravelPercentage>
+        <measuredSiltPercentage rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+        >0.05</measuredSiltPercentage>
+        <calculatedClayPercentage rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+        >0.8888889</calculatedClayPercentage>
+        <clayThickness rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+        >7.0</clayThickness>
+        <sandPercentage rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+        >0.25</sandPercentage>
+        <sandyClayThickness rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+        >14.0</sandyClayThickness>
+        <loamThickness rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+        >5.0</loamThickness>
+        <sandThickness rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+        >15.0</sandThickness>
+        <siltyLoamThickness rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+        >9.0</siltyLoamThickness>
+        <measuredClayPercentage rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+        >0.8</measuredClayPercentage>
+        <calculatedSiltPercentage rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+        >0.055555556</calculatedSiltPercentage>
+        <siltPercentage rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+        >0.25</siltPercentage>
+        <calculatedSandPercentage rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+        >0.055555556</calculatedSandPercentage>
+        <measuredGravelPercentage rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+        >0.1</measuredGravelPercentage>
+        <sampleDepth rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+        >200.0</sampleDepth>
+        <clayLoamThickness rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+        >6.0</clayLoamThickness>
+        <isotropy rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >anisotropic</isotropy>
+        <verticalHydraulicConductivity rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+        >17.54386</verticalHydraulicConductivity>
+        <measuredSandPercentage rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+        >0.05</measuredSandPercentage>
+        <hydraulicConductivity rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >complex</hydraulicConductivity>
+        <loamySandThickness rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+        >4.0</loamySandThickness>
+        <siltyClayLoamThickness rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+        >8.0</siltyClayLoamThickness>
+        <horizontalHydraulicConductivity rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+        >10.0</horizontalHydraulicConductivity>
+        <sandyClayLoamThickness rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+        >12.0</sandyClayLoamThickness>
+        <siltThickness rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+        >11.0</siltThickness>
+        <sandyLoamThickness rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+        >13.0</sandyLoamThickness>
+        <soilType rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >clay</soilType>
+        <soilHeterogeneity rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >extremely heterogeneous</soilHeterogeneity>
+        <siltyClayThickness rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+        >10.0</siltyClayThickness>
+      </SoilSample>
+    </soilSample>
+    <sandThickness rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+    >0.0</sandThickness>
+    <siltThickness rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+    >0.0</siltThickness>
+    <numSamplingPoints rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+    >1</numSamplingPoints>
+    <ethylBenzeneConcentration rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+    >0.25</ethylBenzeneConcentration>
+    <siltyLoamThickness rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+    >0.0</siltyLoamThickness>
+    <remediationMethod>
+      <InSituRemediation rdf:ID="inSituSlurryWalls">
+        <cost rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+        >0.0</cost>
+        <reference rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        ></reference>
+        <dateOfUpdate rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        ></dateOfUpdate>
+        <insituRemediationName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        ></insituRemediationName>
+        <remediationName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        ></remediationName>
+        <efficiency rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+        >0.0</efficiency>
+      </InSituRemediation>
+    </remediationMethod>
+    <clayLoamThickness rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+    >0.0</clayLoamThickness>
+    <benzeneConcentration rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+    >0.5</benzeneConcentration>
+    <loamThickness rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+    >0.0</loamThickness>
+    <measuredClayPercentage rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+    >0.0</measuredClayPercentage>
+    <siltyClayLoamThickness rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+    >0.0</siltyClayLoamThickness>
+    <hydraulicConductivity rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >complex</hydraulicConductivity>
+    <mediaType rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >soilgroundwater</mediaType>
+    <sandyClayThickness rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+    >0.0</sandyClayThickness>
+    <clayThickness rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+    >0.0</clayThickness>
+    <samplingMethodName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >device soil sampling</samplingMethodName>
+    <samplingSite>
+      <Media rdf:ID="site">
+        <siteVolume rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1000</siteVolume>
+        <siteArea rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >100</siteArea>
+        <depthOfSite rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+        >0.0</depthOfSite>
+        <hydraulicConductivity rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >complex</hydraulicConductivity>
+        <siteSize rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >small</siteSize>
+      </Media>
+    </samplingSite>
+    <tolueneConcentration rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+    >0.25</tolueneConcentration>
+    <loamySandThickness rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+    >0.0</loamySandThickness>
+    <sandPercentage rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+    >0.0</sandPercentage>
+  </SoilSamplingExperiment>
+  <PetroleumContaminationRemediation rdf:ID="chemicalOxidationSystem">
+    <remediationName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></remediationName>
+    <reference rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></reference>
+    <cost rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+    >0.0</cost>
+    <dateOfUpdate rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></dateOfUpdate>
+    <efficiency rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+    >0.0</efficiency>
+  </PetroleumContaminationRemediation>
+  <PetroleumContaminationRemediation rdf:ID="compostingTechnology">
+    <efficiency rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+    >98.0</efficiency>
+    <remediationName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Composting Technology</remediationName>
+    <dateOfUpdate rdf:datatype="http://www.w3.org/2001/XMLSchema#date"
+    >2008-02-10</dateOfUpdate>
+    <cost rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+    >10.0</cost>
+  </PetroleumContaminationRemediation>
+  <PetroleumContaminationRemediation rdf:ID="bioremediation">
+    <reference rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></reference>
+    <efficiency rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+    >0.0</efficiency>
+    <remediationName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></remediationName>
+    <dateOfUpdate rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></dateOfUpdate>
+    <cost rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+    >0.0</cost>
+  </PetroleumContaminationRemediation>
+  <ChemicalContaminant rdf:ID="toluene">
+    <contaminationWeight rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+    >0.1</contaminationWeight>
+    <measuredContaminantValue rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+    >0.0</measuredContaminantValue>
+    <chemicalConcentration rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+    >10.0</chemicalConcentration>
+  </ChemicalContaminant>
+  <InSituRemediation rdf:ID="inSituSteamExtractionTreatment">
+    <dateOfUpdate rdf:datatype="http://www.w3.org/2001/XMLSchema#date"
+    >2008-02-10</dateOfUpdate>
+    <remediationName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >In-situ Steam Extraction Treatment</remediationName>
+  </InSituRemediation>
+  <PetroleumContaminationRemediation rdf:ID="airSparging">
+    <dateOfUpdate rdf:datatype="http://www.w3.org/2001/XMLSchema#date"
+    >2008-02-16</dateOfUpdate>
+    <cost rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+    >0.0</cost>
+    <reference rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></reference>
+    <remediationName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></remediationName>
+    <efficiency rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+    >0.0</efficiency>
+  </PetroleumContaminationRemediation>
+  <InSituRemediation rdf:ID="inSituChemicalExtraction">
+    <reference rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></reference>
+    <cost rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+    >0.0</cost>
+    <remediationName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></remediationName>
+    <efficiency rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+    >0.0</efficiency>
+    <dateOfUpdate rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></dateOfUpdate>
+    <insituRemediationName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></insituRemediationName>
+  </InSituRemediation>
+  <PetroleumContaminationRemediation rdf:ID="thermalDesorption">
+    <efficiency rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+    >0.0</efficiency>
+    <remediationName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></remediationName>
+    <reference rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></reference>
+    <cost rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+    >0.0</cost>
+    <dateOfUpdate rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></dateOfUpdate>
+  </PetroleumContaminationRemediation>
+  <ChemicalContaminant rdf:ID="xylenes">
+    <contaminationWeight rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+    >0.1</contaminationWeight>
+    <measuredContaminantValue rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+    >0.0</measuredContaminantValue>
+    <chemicalConcentration rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+    >10.0</chemicalConcentration>
+  </ChemicalContaminant>
+  <InSituRemediation rdf:ID="inSituLeachingAndChemical">
+    <cost rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+    >0.0</cost>
+    <reference rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></reference>
+    <insituRemediationName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></insituRemediationName>
+    <dateOfUpdate rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></dateOfUpdate>
+    <efficiency rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+    >0.0</efficiency>
+    <remediationName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></remediationName>
+  </InSituRemediation>
+  <ChemicalContaminant rdf:ID="ethylBenzene">
+    <measuredContaminantValue rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+    >0.0</measuredContaminantValue>
+    <chemicalConcentration rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+    >10.0</chemicalConcentration>
+    <contaminationWeight rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+    >0.1</contaminationWeight>
+  </ChemicalContaminant>
+  <PetroleumContaminationRemediation rdf:ID="soilVaporExtraction">
+    <remediationName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></remediationName>
+    <dateOfUpdate rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></dateOfUpdate>
+    <reference rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></reference>
+    <cost rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+    >0.0</cost>
+    <efficiency rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+    >0.0</efficiency>
+  </PetroleumContaminationRemediation>
+  <PetroleumContaminationRemediation rdf:ID="desorptionSystemProcess">
+    <efficiency rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+    >0.0</efficiency>
+    <cost rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+    >0.0</cost>
+    <dateOfUpdate rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></dateOfUpdate>
+    <remediationName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></remediationName>
+    <reference rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></reference>
+  </PetroleumContaminationRemediation>
+  <ExSituRemediation rdf:ID="exSituChemicalExtraction">
+    <remediationName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></remediationName>
+    <reference rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></reference>
+    <efficiency rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+    >0.0</efficiency>
+    <cost rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+    >0.0</cost>
+    <exsituRemediationName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></exsituRemediationName>
+    <dateOfUpdate rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></dateOfUpdate>
+  </ExSituRemediation>
+  <InSituRemediation rdf:ID="inSituPassiveRemediation">
+    <dateOfUpdate rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></dateOfUpdate>
+    <remediationName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></remediationName>
+    <insituRemediationName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></insituRemediationName>
+    <efficiency rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+    >0.0</efficiency>
+    <cost rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+    >0.0</cost>
+    <reference rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></reference>
+  </InSituRemediation>
+  <InSituRemediation rdf:ID="inSituVitrification">
+    <insituRemediationName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></insituRemediationName>
+    <reference rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></reference>
+    <dateOfUpdate rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></dateOfUpdate>
+    <efficiency rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+    >0.0</efficiency>
+    <remediationName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></remediationName>
+    <cost rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+    >0.0</cost>
+  </InSituRemediation>
+  <ChemicalContaminant rdf:ID="benzene">
+    <chemicalConcentration rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+    >10.0</chemicalConcentration>
+    <contaminationWeight rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+    >0.1</contaminationWeight>
+    <measuredContaminantValue rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+    >0.0</measuredContaminantValue>
+  </ChemicalContaminant>
+</rdf:RDF>
+
+<!-- Created with Protege (with OWL Plugin 3.2, Build 355)  http://protege.stanford.edu -->
